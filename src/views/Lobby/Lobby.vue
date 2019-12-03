@@ -28,9 +28,9 @@
         >
             <h2 class="text-white">Liste des joueurs</h2>
 
-            <div class="flex flex-col">
+            <div class="flex flex-col py-1">
                 <span
-                    class="text-white"
+                    class="text-white block m-1 bg-red-800 px-2 text-center rounded"
                     v-for="(player, index) in playerList"
                     :key="index"
                     >{{ player.name }}</span

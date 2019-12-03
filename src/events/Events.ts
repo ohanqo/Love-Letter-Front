@@ -3,5 +3,6 @@ export default {
     Players: "Players",
     GameFull: "GameFull",
     Play: "Play",
-    NotEnoughPlayers: "NotEnoughPlayers"
+    NotEnoughPlayers: "NotEnoughPlayers",
+    AlreadyRegistered: "AlreadyRegistered",
 };
