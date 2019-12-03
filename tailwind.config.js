@@ -1,5 +1,9 @@
 module.exports = {
-    theme: {},
+    theme: {
+        fontFamily: {
+            title: ["Poppins", "-apple-system"]
+        }
+    },
     variants: {},
     plugins: []
 };

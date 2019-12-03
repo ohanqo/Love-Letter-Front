@@ -17,10 +17,18 @@ export default class Lobby extends Vue {
         this.socket.on(Events.GameFull, () => {
             alert("La partie est pleine");
         });
+
+        this.socket.on(Events.NotEnoughPlayers, () => {
+            alert("Il n'y a pas assez de joueur pour commencer la partie!");
+        });
     }
 
     public onPlayClick() {
         this.socket.emit(Events.PlayerConnect, this.username);
+    }
+
+    public onLaunchButtonClick() {
+        this.socket.emit(Events.Play);
     }
 
     public get socket(): SocketIOClient.Socket {
