@@ -1,0 +1,48 @@
+.vertical-center {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.v-100vh {
+    min-height: 100vh;
+}
+
+#login {
+    max-width: 320px;
+    margin: 0 auto;
+    text-align: center;
+    .form {
+        background-color: #efefef;
+        border-radius: 8px;
+        padding: 20px;
+
+        h1 {
+            font-family: "Poppins", sans-serif;
+            font-weight: bold;
+            font-size: 2rem;
+            margin-top: 0;
+        }
+    }
+    input {
+        margin: 10px 0 0 0;
+        &[type="password"] {
+            padding: 8px 22px;
+            border-radius: 8px;
+            border: none;
+            background-color: #cccccc;
+            outline-color: blueviolet;
+            &::placeholder {
+                color: black;
+            }
+        }
+        &[type="submit"] {
+            padding: 8px 22px;
+            border-radius: 8px;
+            border: none;
+            background-color: blueviolet;
+            color: white;
+            outline: none;
+        }
+    }
+}
