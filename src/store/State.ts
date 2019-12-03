@@ -1,5 +1,7 @@
 import io from "socket.io-client";
+import Player from "@/models/Player";
 
 export default class State {
-    public mainSocket = io.connect(process.env.VUE_APP_SERVER_URL!);
+    public socket = io.connect(process.env.VUE_APP_SERVER_URL!);
+    public players: Player[] = [];
 }
