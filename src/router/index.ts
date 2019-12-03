@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home/Home.vue";
 import Login from "@/views/Login/Login.vue";
+import Game from "@/views/Game/Game.vue";
+import Lobby from "@/views/Lobby/Lobby.vue";
 
 Vue.use(VueRouter);
 
@@ -14,27 +16,15 @@ const routes = [
     {
         path: "/",
         name: "lobby",
-        component: Home,
-        beforeEnter: (to: any, from: any, next: any) => {
-            if (isLogged()) {
-                next();
-            } else {
-                router.replace({ name: "login" });
-            }
-        }
+        component: Lobby,
+        beforeEnter: (to: any, from: any, next: any) => passwordMiddleware(next)
+    },
+    {
+        path: "/game",
+        name: "game",
+        component: Game,
+        beforeEnter: (to: any, from: any, next: any) => passwordMiddleware(next)
     }
-    // {
-    //     path: "/game",
-    //     name: "game",
-    //     component: Game,
-    //     beforeEnter: (to: any, from: any, next: any) => {
-    //         if (isLogged()) {
-    //             next();
-    //         } else {
-    //             router.replace({ name: "login" });
-    //         }
-    //     }
-    // }
 ];
 
 const router = new VueRouter({
@@ -45,6 +35,14 @@ const router = new VueRouter({
 
 const isLogged = (): boolean => {
     return localStorage.password === "gucci-baron";
+};
+
+const passwordMiddleware = (next: () => void) => {
+    if (isLogged()) {
+        next();
+    } else {
+        router.replace({ name: "login" });
+    }
 };
 
 export default router;

@@ -6,13 +6,9 @@
                 <input
                     v-model="password"
                     type="password"
-                    placeholder="Mot de passe pute"
+                    placeholder="Mot de passe"
                 />
-                <input
-                    @click="onButtonClick"
-                    type="submit"
-                    value="Valider pute"
-                />
+                <input @click="onButtonClick" type="submit" value="Valider" />
             </div>
         </div>
     </section>
