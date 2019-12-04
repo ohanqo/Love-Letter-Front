@@ -5,5 +5,6 @@ export default {
     Play: "Play",
     NotEnoughPlayers: "NotEnoughPlayers",
     AlreadyRegistered: "AlreadyRegistered",
-    Me: "Me"
+    Me: "Me",
+    StartRound: "StartRound"
 };

@@ -1,6 +1,11 @@
 import { Component, Vue } from "vue-property-decorator";
+import Hand from "../PlayerHand/PlayerHand.vue";
 
-@Component
+@Component({
+    components: {
+        Hand
+    }
+})
 export default class Board extends Vue {
     mounted() {}
 

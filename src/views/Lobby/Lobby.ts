@@ -29,6 +29,10 @@ export default class Lobby extends Vue {
         this.socket.on(Events.Me, (player: Player) => {
             console.log(player);
         });
+
+        this.socket.on(Events.StartRound, (players: Player[]) => {
+            console.log(players);
+        });
     }
 
     public onPlayClick() {

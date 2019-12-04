@@ -6,6 +6,10 @@
                 src="/assets/img/bg-board-2.png"
                 alt="Table de jeu"
             />
+            <button class="deck"></button>
+            <div class="positionHands">
+                <Hand v-for="index in 6" :key="index"></Hand>
+            </div>
             <button @click="showAllCards" class="display-none btn-easy-win">
                 Easy win
             </button>
