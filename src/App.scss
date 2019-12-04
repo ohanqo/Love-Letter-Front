@@ -3,3 +3,17 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.display-none {
+  display: none !important;
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.v-100vh {
+  min-height: 100vh;
+}

@@ -25,6 +25,10 @@ export default class Lobby extends Vue {
         this.socket.on(Events.AlreadyRegistered, () => {
             alert("Vous êtes déjà inscrit !");
         });
+
+        this.socket.on(Events.Me, (player: Player) => {
+            console.log(player);
+        });
     }
 
     public onPlayClick() {

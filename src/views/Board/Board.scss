@@ -1,0 +1,23 @@
+.bg-board {
+  max-width: 70%;
+  height: auto;
+  margin: 0 auto;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#board {
+  background-color: #474747;
+}
+
+.btn-easy-win {
+  z-index: 30;
+  position: fixed;
+  bottom: 2px;
+  right: 2px;
+  background-color: blueviolet;
+  color: white;
+  border-radius: 8px;
+  padding: 5px 8px;
+}

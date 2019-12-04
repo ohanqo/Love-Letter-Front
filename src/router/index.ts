@@ -1,9 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "@/views/Home/Home.vue";
 import Login from "@/views/Login/Login.vue";
-import Game from "@/views/Game/Game.vue";
 import Lobby from "@/views/Lobby/Lobby.vue";
+import Board from "@/views/Board/Board.vue";
 
 Vue.use(VueRouter);
 
@@ -22,7 +21,7 @@ const routes = [
     {
         path: "/game",
         name: "game",
-        component: Game,
+        component: Board,
         beforeEnter: (to: any, from: any, next: any) => passwordMiddleware(next)
     }
 ];
