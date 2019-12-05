@@ -12,11 +12,9 @@ export default class PlayerHand extends Vue {
     @Prop({ required: true })
     public player!: Player;
 
-    public card: Card = new Card();
     public showCard: boolean = false;
 
     mounted() {
-        this.card = this.player.cardsHand[this.player.cardsHand.length - 1];
         if (this.currentPlayer.id === this.player.id) this.showCard = true;
         else this.showCard = false;
     }

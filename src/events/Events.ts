@@ -7,5 +7,6 @@ export default {
     AlreadyRegistered: "AlreadyRegistered",
     CurrentPlayer: "CurrentPlayer",
     StartRound: "StartRound",
-    PickCard: "PickCard"
+    Pick: "Pick",
+    CardPicked: "CardPicked"
 };

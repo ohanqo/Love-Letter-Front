@@ -8,9 +8,7 @@
             />
             <button class="deck" @click="pickCard"></button>
             <div class="positionHands">
-                <Hand v-for="(p, index) in players"
-                    :key="index"
-                    :player = p></Hand>
+                <Hand v-for="(p, index) in players" :key="index" :player="p" />
             </div>
             <div class="status_game">
                 {{ status }}

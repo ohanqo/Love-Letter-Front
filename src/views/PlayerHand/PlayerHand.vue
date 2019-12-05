@@ -1,6 +1,11 @@
 <template>
     <div id="handcards">
-        <CardOfPlayer :showCard="showCard" :card="card" />
+        <CardOfPlayer
+            v-for="(card, index) in player.cardsHand"
+            :key="index"
+            :showCard="showCard"
+            :card="card"
+        />
     </div>
 </template>
 

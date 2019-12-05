@@ -2,6 +2,7 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 import Hand from "../PlayerHand/PlayerHand.vue";
 import Events from "@/events/Events";
 import Player from "@/models/Player";
+import { SET_PLAYERS } from "@/store/types";
 
 @Component({
     components: {
@@ -11,13 +12,19 @@ import Player from "@/models/Player";
 export default class Board extends Vue {
     public status: String = "C'est au tour du joueur : ";
 
+    public mounted() {
+        this.socket.on(Events.CardPicked, (players: Player[]) => {
+            this.$store.commit(SET_PLAYERS, players);
+        });
+    }
+
     public showAllCards() {
         console.log("Win");
     }
 
     public pickCard() {
         if (this.currentPlayer.isPlayerTurn) {
-            this.socket.emit(Events.PickCard);
+            this.socket.emit(Events.Pick);
         }
     }
 
