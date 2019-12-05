@@ -1,7 +1,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import Events from "@/events/Events";
 import Player from "@/models/Player";
-import { SET_PLAYERS } from "@/store/types";
+import { SET_PLAYERS, SET_PLAYERSLIST, SET_ME } from "@/store/types";
 
 @Component
 export default class Lobby extends Vue {
@@ -28,10 +28,13 @@ export default class Lobby extends Vue {
 
         this.socket.on(Events.Me, (player: Player) => {
             console.log(player);
+            this.$store.commit(SET_ME, player);
         });
 
         this.socket.on(Events.StartRound, (players: Player[]) => {
             console.log(players);
+            this.$store.commit(SET_PLAYERSLIST, players);
+            this.$router.replace({ name: "game" });
         });
     }
 
