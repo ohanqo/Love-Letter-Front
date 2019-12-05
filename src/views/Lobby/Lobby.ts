@@ -1,7 +1,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import Events from "@/events/Events";
 import Player from "@/models/Player";
-import { SET_PLAYERS, SET_CURRENT_PLAYER } from "@/store/types";
+import { SET_PLAYERS, SET_CURRENT_PLAYER_ID } from "@/store/types";
 
 @Component
 export default class Lobby extends Vue {
@@ -24,8 +24,8 @@ export default class Lobby extends Vue {
             alert("Vous êtes déjà inscrit !");
         });
 
-        this.socket.on(Events.Me, (player: Player) => {
-            this.$store.commit(SET_CURRENT_PLAYER, player);
+        this.socket.on(Events.CurrentPlayer, (currentPlayerId: string) => {
+            this.$store.commit(SET_CURRENT_PLAYER_ID, currentPlayerId);
         });
 
         this.socket.on(Events.StartRound, (players: Player[]) => {
