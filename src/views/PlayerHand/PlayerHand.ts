@@ -1,4 +1,4 @@
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import Player from "@/models/Player";
 import Card from "@/models/Card";
 

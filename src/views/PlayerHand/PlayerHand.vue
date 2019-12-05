@@ -1,9 +1,11 @@
 <template>
     <div id="handcards">
-        <div class="card">
-            {{ currentPlayer.id }}
+        <div v-if="currentPlayer.id == player.id" class="card">
             <img v-bind:src="'/assets/img/card_' + card.value + '.png'" />
         </div>
+		<div v-else class="card">
+			<img src="/assets/img/back_card.png" />
+		</div>
     </div>
 </template>
 

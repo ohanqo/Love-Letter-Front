@@ -30,13 +30,6 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  div {
-    width: 33%;
-    height: 50vh;
-    &:hover {
-      border: 1px solid violet;
-    }
-  }
 }
 
 .deck {
