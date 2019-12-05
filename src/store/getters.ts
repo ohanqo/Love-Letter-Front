@@ -10,7 +10,7 @@ const getters: GetterTree<State, State> = {
     [GET_SOCKET](state: State): SocketIOClient.Socket {
         return state.socket;
     },
-    [GET_PLAYERSLIST](state: State): Player [] {
+    [GET_PLAYERSLIST](state: State): Player[] {
         return state.playersList;
     },
     [GET_ME](state: State): Player {

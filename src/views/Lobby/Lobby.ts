@@ -27,7 +27,6 @@ export default class Lobby extends Vue {
         });
 
         this.socket.on(Events.Me, (player: Player) => {
-            console.log(player);
             this.$store.commit(SET_ME, player);
         });
 
