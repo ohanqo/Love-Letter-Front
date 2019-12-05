@@ -1,9 +1,6 @@
 <template>
     <div id="handcards">
-        <CardOfPlayer
-		:showCard=showCard
-		:card=card>
-        </CardOfPlayer>
+        <CardOfPlayer :showCard="showCard" :card="card" />
     </div>
 </template>
 

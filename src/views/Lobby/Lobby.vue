@@ -31,7 +31,7 @@
             <div class="flex flex-col py-1">
                 <span
                     class="text-white block m-1 bg-red-800 px-2 text-center rounded"
-                    v-for="(player, index) in playerList"
+                    v-for="(player, index) in players"
                     :key="index"
                     >{{ player.name }}</span
                 >

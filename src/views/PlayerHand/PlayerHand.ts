@@ -4,7 +4,7 @@ import Card from "@/models/Card";
 import CardOfPlayer from "../Card/Card.vue";
 
 @Component({
-    components:{
+    components: {
         CardOfPlayer
     }
 })
@@ -17,13 +17,11 @@ export default class PlayerHand extends Vue {
 
     mounted() {
         this.card = this.player.cardsHand[this.player.cardsHand.length - 1];
-        if(this.currentPlayer.id === this.player.id)
-            this.showCard = true;
-        else
-            this.showCard = false
+        if (this.currentPlayer.id === this.player.id) this.showCard = true;
+        else this.showCard = false;
     }
 
     get currentPlayer() {
-        return this.$store.getters.GET_ME;
+        return this.$store.state.currentPlayer;
     }
 }

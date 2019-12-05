@@ -1,17 +1,15 @@
 import { Component, Vue } from "vue-property-decorator";
 import Events from "@/events/Events";
 import Player from "@/models/Player";
-import { SET_PLAYERS, SET_PLAYERSLIST, SET_ME } from "@/store/types";
+import { SET_PLAYERS, SET_CURRENT_PLAYER } from "@/store/types";
 
 @Component
 export default class Lobby extends Vue {
     public username = "";
-    public playerList: Player[] = [];
 
     public mounted() {
         this.socket.on(Events.Players, (playerList: Player[]) => {
             this.$store.commit(SET_PLAYERS, playerList);
-            this.playerList = playerList;
         });
 
         this.socket.on(Events.GameFull, () => {
@@ -27,12 +25,12 @@ export default class Lobby extends Vue {
         });
 
         this.socket.on(Events.Me, (player: Player) => {
-            this.$store.commit(SET_ME, player);
+            this.$store.commit(SET_CURRENT_PLAYER, player);
         });
 
         this.socket.on(Events.StartRound, (players: Player[]) => {
             console.log(players);
-            this.$store.commit(SET_PLAYERSLIST, players);
+            this.$store.commit(SET_PLAYERS, players);
             this.$router.replace({ name: "game" });
         });
     }
@@ -46,6 +44,10 @@ export default class Lobby extends Vue {
     }
 
     public get socket(): SocketIOClient.Socket {
-        return this.$store.getters.GET_SOCKET;
+        return this.$store.state.socket;
+    }
+
+    public get players(): Player[] {
+        return this.$store.state.players;
     }
 }

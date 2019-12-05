@@ -5,6 +5,6 @@ export default class Player {
         public id: string,
         public name: string,
         public cardsHand: Card[] = [],
-        public isPlayerTurn:boolean,
+        public isPlayerTurn = false,
     ) {}
 }
