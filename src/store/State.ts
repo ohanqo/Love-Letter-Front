@@ -5,5 +5,5 @@ export default class State {
     public socket = io.connect(process.env.VUE_APP_SERVER_URL!);
     public players: Player[] = [];
     public playersList: Player[] = [];
-    public me: Player = new Player("0", "Unkown", []);
+    public me: Player = new Player("0", "Unkown", [],false);
 }

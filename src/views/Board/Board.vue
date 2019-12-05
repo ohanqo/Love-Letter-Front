@@ -12,6 +12,9 @@
                     :key="index"
                     :player = p></Hand>
             </div>
+            <div class="status_game">
+                {{ status }}
+            </div>
             <button @click="showAllCards" class="display-none btn-easy-win">
                 Easy win
             </button>

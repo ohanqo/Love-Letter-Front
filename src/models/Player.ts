@@ -4,6 +4,7 @@ export default class Player {
     public constructor(
         public id: string,
         public name: string,
-        public cardsHand: Card[] = []
+        public cardsHand: Card[] = [],
+        public isPlayerTurn:boolean,
     ) {}
 }
