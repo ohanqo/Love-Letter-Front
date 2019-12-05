@@ -1,7 +1,7 @@
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import Player from "@/models/Player";
 import Card from "@/models/Card";
-import CardOfPlayer from "../Card/Card.vue";
+import CardOfPlayer from "../CardComponent/CardComponent.vue";
 
 @Component({
     components: {
