@@ -1,6 +1,6 @@
 <template>
-	<div @click="PlayCard(card)" class="card">
-		<img v-if="showCard" v-bind:src="'/assets/img/card_'+ card.value +'.png'" />
+	<div @click="playCard(card)" class="card">
+		<img v-if="showCard" :src="'/assets/img/card_'+ card.value +'.png'" />
 		<img v-else src="/assets/img/back_card.png" />
 	</div>
 </template>

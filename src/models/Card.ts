@@ -3,4 +3,5 @@ export default class Card {
     public value = 0;
     public isBurned = false;
     public isDiscarded = false;
+    public isPassive = true;
 }

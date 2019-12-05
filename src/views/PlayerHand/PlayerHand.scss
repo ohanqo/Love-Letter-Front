@@ -6,10 +6,12 @@
 }
 
 .card{
+    position: relative;
     width: 110px;
     height: fit-content;
     border-radius: 4px;
     margin: 15px 5px;
+    z-index: 5;
     img{
         border-radius: 4px;
         width: 110px;

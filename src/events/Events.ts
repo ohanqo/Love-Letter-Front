@@ -8,5 +8,6 @@ export default {
     CurrentPlayer: "CurrentPlayer",
     StartRound: "StartRound",
     Pick: "Pick",
-    CardPicked: "CardPicked"
+    CardPicked: "CardPicked",
+    PlayCard: "PlayCard",
 };

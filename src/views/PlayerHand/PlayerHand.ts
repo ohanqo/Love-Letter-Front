@@ -12,13 +12,14 @@ export default class PlayerHand extends Vue {
     @Prop({ required: true })
     public player!: Player;
 
+
     public showCard: boolean = false;
 
     mounted() {
         if (this.currentPlayer.id === this.player.id) this.showCard = true;
         else this.showCard = false;
     }
-
+    
     get currentPlayer() {
         return this.$store.getters.GET_CURRENT_PLAYER;
     }
