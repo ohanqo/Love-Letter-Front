@@ -8,7 +8,6 @@ import store from '@/store';
     components: {
         Hand
     }
-
 })
 export default class Board extends Vue {
     public players: Player[] = [];
