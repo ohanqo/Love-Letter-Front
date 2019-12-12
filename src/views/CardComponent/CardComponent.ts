@@ -1,7 +1,7 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
-import Card from '@/models/Card';
-import Events from '@/events/Events';
-import PlayCardDto from '@/dto/PlayCardDto';
+import Card from "@/models/Card";
+import Events from "@/events/Events";
+import PlayCardDto from "@/dto/PlayCardDto";
 
 @Component
 export default class CardComponent extends Vue {
@@ -11,15 +11,14 @@ export default class CardComponent extends Vue {
     @Prop({ required: true })
     public card!: Card;
 
-    public playCard(card: Card){
+    public playCard(card: Card) {
         const cardPlayed: PlayCardDto = {
-            cardToPlay:card
+            cardId: card.id
         };
-        if(card.isPassive){
+        if (card.isPassive) {
             this.socket.emit(Events.PlayCard, cardPlayed);
-        }
-        else{
-            console.log('select player')
+        } else {
+            console.log("select player");
         }
     }
 

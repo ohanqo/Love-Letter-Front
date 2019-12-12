@@ -1,5 +1,6 @@
 export default class Card {
-    public name = "Unkown";
+    public id = "unknown";
+    public name = "unknown";
     public value = 0;
     public isBurned = false;
     public isDiscarded = false;

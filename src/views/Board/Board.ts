@@ -16,6 +16,10 @@ export default class Board extends Vue {
         this.socket.on(Events.CardPicked, (players: Player[]) => {
             this.$store.commit(SET_PLAYERS, players);
         });
+
+        this.socket.on(Events.CardPlayed, (players: Player[]) => {
+            this.$store.commit(SET_PLAYERS, players);
+        });
     }
 
     public showAllCards() {
