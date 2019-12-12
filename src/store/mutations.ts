@@ -8,7 +8,7 @@ const mutations: MutationTree<State> = {
         state.players = newPlayers;
     },
     [SET_CURRENT_PLAYER_ID](state: State, newCurrrentPlayerId: string) {
-        state.currentPlayerId = newCurrrentPlayerId;
+        state.connectedPlayerId = newCurrrentPlayerId;
     }
 };
 

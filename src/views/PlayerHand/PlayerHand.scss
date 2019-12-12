@@ -5,7 +5,7 @@
     flex-wrap:wrap ;
 }
 
-.card{
+#card{
     position: relative;
     width: 110px;
     height: fit-content;
@@ -20,5 +20,12 @@
     &:hover{
         border: 1px solid white;
         cursor: pointer;
+    }
+}
+
+.selected{
+    border: 2px solid blueviolet;
+    &:hover{  
+        border: 2px solid blueviolet !important;
     }
 }

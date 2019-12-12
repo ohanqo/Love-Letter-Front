@@ -37,7 +37,7 @@ export default class Board extends Vue {
     }
 
     get currentPlayer() {
-        return this.$store.getters.GET_CURRENT_PLAYER;
+        return this.$store.getters.GET_CONNECTED_PLAYER;
     }
 
     get players() {

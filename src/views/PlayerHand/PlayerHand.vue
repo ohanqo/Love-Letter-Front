@@ -5,6 +5,9 @@
             :key="index"
             :showCard="showCard"
             :card="card"
+            :player ="player"
+            :isSelected="index === cardSelectedIndex ? true : false"
+            v-on:update-selected-card="updateSelectedCard(index)"
         />
     </div>
 </template>
