@@ -3,10 +3,12 @@ import Hand from "../PlayerHand/PlayerHand.vue";
 import Events from "@/events/Events";
 import Player from "@/models/Player";
 import { SET_PLAYERS } from "@/store/types";
+import ChancellorModalComponent from "@/components/ChancellorModalComponent/ChancellorModalComponent.vue";
 
 @Component({
     components: {
-        Hand
+        Hand,
+        ChancellorModalComponent
     }
 })
 export default class Board extends Vue {
@@ -19,6 +21,10 @@ export default class Board extends Vue {
 
         this.socket.on(Events.CardPlayed, (players: Player[]) => {
             this.$store.commit(SET_PLAYERS, players);
+        });
+
+        this.socket.on(Events.ChancellorChooseCard, () => {
+            console.log("keep one card");
         });
     }
 

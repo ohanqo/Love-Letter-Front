@@ -2,8 +2,8 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import Card from "@/models/Card";
 import Events from "@/events/Events";
 import PlayCardDto from "@/dto/PlayCardDto";
-import Player from '@/models/Player';
-import { GET_PLAYER_WHO_HAS_TO_PLAY } from '@/store/types';
+import Player from "@/models/Player";
+import { GET_PLAYER_WHO_HAS_TO_PLAY } from "@/store/types";
 
 @Component
 export default class CardComponent extends Vue {
@@ -23,7 +23,9 @@ export default class CardComponent extends Vue {
         const cardPlayed: PlayCardDto = {
             cardId: card.id
         };
-        if (card.isPassive) {
+        if (card.name === "Chancelier") {
+            this.socket.emit(Events.PlayChancellorCard, cardPlayed);
+        } else if (card.isPassive) {
             this.socket.emit(Events.PlayCard, cardPlayed);
         } else {
             this.selectedCard();

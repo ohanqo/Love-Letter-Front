@@ -17,6 +17,8 @@
                 Easy win
             </button>
         </div>
+
+        <ChancellorModalComponent />
     </section>
 </template>
 

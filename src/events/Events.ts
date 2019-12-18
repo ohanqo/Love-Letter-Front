@@ -10,5 +10,7 @@ export default {
     Pick: "Pick",
     CardPicked: "CardPicked",
     PlayCard: "PlayCard",
-    CardPlayed: "CardPlayed"
+    CardPlayed: "CardPlayed",
+    PlayChancellorCard: "PlayChancellorCard",
+    ChancellorChooseCard: "ChancellorChooseCard"
 };
