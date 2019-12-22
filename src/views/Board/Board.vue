@@ -18,7 +18,10 @@
             </button>
         </div>
 
-        <ChancellorModalComponent />
+        <ChancellorModalComponent
+            v-if="showChancellorModal"
+            v-on:send-chancellor-placed-cards="sendChancellorPlacedCards"
+        />
     </section>
 </template>
 

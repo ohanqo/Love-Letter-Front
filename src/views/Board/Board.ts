@@ -4,6 +4,7 @@ import Events from "@/events/Events";
 import Player from "@/models/Player";
 import { SET_PLAYERS } from "@/store/types";
 import ChancellorModalComponent from "@/components/ChancellorModalComponent/ChancellorModalComponent.vue";
+import Card from "@/models/Card";
 
 @Component({
     components: {
@@ -13,6 +14,7 @@ import ChancellorModalComponent from "@/components/ChancellorModalComponent/Chan
 })
 export default class Board extends Vue {
     public status: String = "C'est au tour du joueur : ";
+    public showChancellorModal = false;
 
     public mounted() {
         this.socket.on(Events.CardPicked, (players: Player[]) => {
@@ -24,8 +26,13 @@ export default class Board extends Vue {
         });
 
         this.socket.on(Events.ChancellorChooseCard, () => {
-            console.log("keep one card");
+            this.showChancellorModal = true;
         });
+    }
+
+    public sendChancellorPlacedCards(placedCards: Card[]) {
+        this.socket.emit(Events.ChancellorPlacedCard, placedCards);
+        this.showChancellorModal = false;
     }
 
     public showAllCards() {

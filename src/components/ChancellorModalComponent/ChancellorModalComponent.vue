@@ -14,20 +14,38 @@
                     v-for="(card, index) in connectedPlayer.cardsHand"
                     :key="index"
                     :src="`/assets/img/card_${card.value}.png`"
+                    :id="card.id"
                     class="w-40 mr-4 is-draggable"
                 />
             </div>
 
             <div class="flex flex-no-wrap justify-between mt-16 container">
                 <div>
-                    <div class="bg-black w-40 h-64 is-dropzone"></div>
+                    <div
+                        data-index="0"
+                        class="bg-black w-40 h-64 is-dropzone"
+                    ></div>
                 </div>
 
                 <div class="flex">
-                    <div class="bg-black w-40 h-64 mr-8 is-dropzone"></div>
-                    <div class="bg-black w-40 h-64 is-dropzone"></div>
+                    <div
+                        data-index="1"
+                        class="bg-black w-40 h-64 mr-8 is-dropzone"
+                    ></div>
+                    <div
+                        data-index="2"
+                        class="bg-black w-40 h-64 is-dropzone"
+                    ></div>
                 </div>
             </div>
+
+            <button
+                :disabled="!hasPlacedAllCards"
+                @click="emitPlacedCards"
+                class="block border border-white mt-5 mx-auto px-5 py-2 rounded text-white disabled:opacity-50"
+            >
+                Confirmer
+            </button>
         </div>
     </div>
 </template>
