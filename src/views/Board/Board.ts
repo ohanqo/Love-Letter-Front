@@ -5,6 +5,7 @@ import Player from "@/models/Player";
 import { SET_PLAYERS } from "@/store/types";
 import ChancellorModalComponent from "@/components/ChancellorModalComponent/ChancellorModalComponent.vue";
 import Card from "@/models/Card";
+import Message from "@/models/Message";
 
 @Component({
     components: {
@@ -27,6 +28,14 @@ export default class Board extends Vue {
 
         this.socket.on(Events.ChancellorChooseCard, () => {
             this.showChancellorModal = true;
+        });
+
+        this.socket.on(Events.Message, ({ message, type }: Message) => {
+            if (type === "success") {
+                this.$toasted.global.success({ message });
+            } else {
+                this.$toasted.global.error({ message });
+            }
         });
     }
 

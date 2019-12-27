@@ -4,7 +4,7 @@ import { InteractEvent } from "@interactjs/types/types";
 import gsap from "gsap";
 import Card from "@/models/Card";
 import Player from "@/models/Player";
-import { findIndex } from "lodash";
+import { findIndex, cloneDeep } from "lodash";
 
 @Component
 export default class ChancellorModalComponent extends Vue {
@@ -16,7 +16,7 @@ export default class ChancellorModalComponent extends Vue {
     }
 
     public emitPlacedCards() {
-        this.$emit("send-chancellor-placed-cards", this.placedCards);
+        this.$emit("send-chancellor-placed-cards", cloneDeep(this.placedCards));
     }
 
     public get hasPlacedAllCards(): boolean {
@@ -26,7 +26,7 @@ export default class ChancellorModalComponent extends Vue {
     private initCardsDropzone() {
         interact(".is-dropzone").dropzone({
             accept: ".is-draggable",
-            overlap: 0.5
+            overlap: 0.75
         });
     }
 
@@ -51,7 +51,6 @@ export default class ChancellorModalComponent extends Vue {
         const newX = initialX + deltaX;
         const newY = initialY + deltaY;
 
-        // target.style.transform = `translate(${newX}px, ${newY}px)`;
         this.moveTargetTo(target, newX, newY);
     }
 

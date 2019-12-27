@@ -13,5 +13,6 @@ export default {
     CardPlayed: "CardPlayed",
     PlayChancellorCard: "PlayChancellorCard",
     ChancellorChooseCard: "ChancellorChooseCard",
-    ChancellorPlacedCard: "ChancellorPlacedCard"
+    ChancellorPlacedCard: "ChancellorPlacedCard",
+    Message: "Message"
 };
