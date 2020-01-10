@@ -22,6 +22,11 @@
             v-if="showChancellorModal"
             v-on:send-chancellor-placed-cards="sendChancellorPlacedCards"
         />
+
+        <CommonModalComponent
+            v-if="showCommonModal"
+            v-on:send-card-played="sendCardPlayed"
+         />
     </section>
 </template>
 
