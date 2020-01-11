@@ -35,6 +35,9 @@
 
          <PriestModalComponent
             v-if="showPriestModal"
+            v-on:send-card-played-priest="sendCardPlayedPriest"
+            v-on:close-priest-modal="closePriestModal"
+            :targetCard="targetCard"
          />
     </section>
 </template>

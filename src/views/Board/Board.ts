@@ -29,7 +29,8 @@ export default class Board extends Vue {
     public showChancellorModal = false;
     public showPriestModal = false;
     public cardPlayed?: PlayCardDto;
-    //PlayPriestCard
+    public targetCard: Card | null = null;
+     
 
     public mounted() {
         this.socket.on(Events.CardPicked, (players: Player[]) => {
@@ -38,6 +39,10 @@ export default class Board extends Vue {
 
         this.socket.on(Events.CardPlayed, (players: Player[]) => {
             this.$store.commit(SET_PLAYERS, players);
+        });
+
+        this.socket.on(Events.ShowTargetCard, (targetCard: Card) => {
+            this.targetCard = targetCard;
         });
 
         this.socket.on(Events.ChancellorChooseCard, () => {
@@ -100,6 +105,22 @@ export default class Board extends Vue {
             this.showGuardModal = false;
             this.cardPlayed = undefined;
         }
+    }
+
+    public sendCardPlayedPriest(selectedTargetId: string){
+        if (this.cardPlayed?.cardId) {
+            const data: PlayCardDto = {
+                cardId: this.cardPlayed.cardId,
+                targetId: selectedTargetId
+            };
+            this.socket.emit(Events.PlayPriestCard, data);
+            this.cardPlayed = undefined;
+        }
+    }
+
+    public closePriestModal(){
+        this.showPriestModal = false;
+        this.targetCard = null;
     }
 
     public sendChancellorPlacedCards(placedCards: Card[]) {

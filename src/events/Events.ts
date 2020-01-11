@@ -14,5 +14,7 @@ export default {
     PlayChancellorCard: "PlayChancellorCard",
     ChancellorChooseCard: "ChancellorChooseCard",
     ChancellorPlacedCard: "ChancellorPlacedCard",
-    Message: "Message"
+    Message: "Message",
+    PlayPriestCard: "PlayPriestCard",
+    ShowTargetCard: "ShowTargetCard"
 };

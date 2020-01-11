@@ -1,7 +1,7 @@
 <template>
 	<div class="z-10 absolute top-0 right-0 bottom-0 left-0 flex justify-center items-center">
 		<div class="absolute w-full h-full bg-gray-800 opacity-50"></div>
-		<div class="relative">
+		<div v-if="targetCard === null" class="relative">
 			<h2 class="w-full my-2 text-2xl leading-tight text-center text-white">La carte de quel joueurs souhaitez-vous voir ?</h2>
 			<div class="flex items-center justify-center">
 				<div class="inline-block relative w-64 m-2">
@@ -14,7 +14,16 @@
 				</div>	
 			</div>	
 			<div class="flex items-center justify-center">
-				<button class="mx-auto block  lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">Confirmer</button>
+				<button @click="sendCardPlayedEvent" class="mx-auto block lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">Confirmer</button>
+			</div>
+		</div>
+		
+		<div v-else class="relative">
+			<CardPlayed
+				:card="targetCard"
+			/>
+			<div class="flex items-center justify-center">
+				<button @click="closePriestModal" class="mx-auto block lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">Fermer</button>
 			</div>
 		</div>
 	</div>
