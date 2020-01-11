@@ -24,20 +24,20 @@ export default class CardComponent extends Vue {
         const cardPlayed: PlayCardDto = {
             cardId: card.id
         };
+        this.selectedCard();
         if (card.name === "Chancelier") {
             this.socket.emit(Events.PlayChancellorCard, cardPlayed);
         } 
         else if (card.name === "Garde") {
-            this.socket.emit(Events.PlayChancellorCard, cardPlayed);
+            EventBus.$emit('display-guard-modal', cardPlayed);
         }
         else if (card.name === "Prêtre") {
-            this.socket.emit(Events.PlayChancellorCard, cardPlayed);
+           console.log("Pretre");
         }
         else if (card.isPassive) {
             this.socket.emit(Events.PlayCard, cardPlayed);
         } else {
             EventBus.$emit('display-common-modal', cardPlayed);
-            this.selectedCard()
         }
     }
 

@@ -27,6 +27,11 @@
             v-if="showCommonModal"
             v-on:send-card-played="sendCardPlayed"
          />
+
+         <GuardModalComponent
+            v-if="showGuardModal"
+            v-on:send-card-played-guard="sendCardPlayedGuard"
+         />
     </section>
 </template>
 

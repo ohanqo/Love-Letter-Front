@@ -5,6 +5,7 @@ import Player from "@/models/Player";
 import { SET_PLAYERS } from "@/store/types";
 import ChancellorModalComponent from "@/components/ChancellorModalComponent/ChancellorModalComponent.vue";
 import CommonModalComponent from "@/components/CommonModalComponent/CommonModalComponent.vue";
+import GuardModalComponent from "@/components/GuardModalComponent/GuardModalComponent.vue";
 import Card from "@/models/Card";
 import Message from "@/models/Message";
 import PlayCardDto from '@/dto/PlayCardDto';
@@ -15,12 +16,14 @@ import CardPlayed from '../CardPlayed/CardPlayed';
     components: {
         Hand,
         ChancellorModalComponent,
-        CommonModalComponent
+        CommonModalComponent,
+        GuardModalComponent
     }
 })
 export default class Board extends Vue {
     public status: String = "C'est au tour du joueur : ";
     public showCommonModal = false;
+    public showGuardModal = false;
     public showChancellorModal = false;
     public cardPlayed?: PlayCardDto;
 
@@ -49,6 +52,11 @@ export default class Board extends Vue {
             this.showCommonModal = true;
             this.cardPlayed = cardPlayed;
         });
+
+        EventBus.$on('display-guard-modal', (cardPlayed: PlayCardDto) => {
+            this.showGuardModal = true;
+            this.cardPlayed = cardPlayed;
+        });
     }
 
     public sendCardPlayed(selectedTargetId: string) {
@@ -62,6 +70,20 @@ export default class Board extends Vue {
             this.showCommonModal = false;
             this.cardPlayed = undefined;
         }
+    }
+
+    public sendCardPlayedGuard(selectedTargetId: string,selectedCardValue: Number){
+        console.log(selectedTargetId);
+        console.log(selectedCardValue);
+
+        if (this.cardPlayed?.cardId) {
+            const data: PlayCardDto = {
+                cardId: this.cardPlayed.cardId,
+                targetId: selectedTargetId
+            };
+        }
+        this.showGuardModal = false;
+        this.cardPlayed = undefined;
     }
 
     public sendChancellorPlacedCards(placedCards: Card[]) {

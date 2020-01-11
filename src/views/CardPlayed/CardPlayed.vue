@@ -1,5 +1,7 @@
 <template>
-	<div></div>
+    <div class="card">
+        <img :src="'/assets/img/card_' + card.value + '.png'" />
+    </div>
 </template>
 
 <script lang="ts" src="./CardPlayed.ts" />

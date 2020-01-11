@@ -1,11 +1,12 @@
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import Player from "@/models/Player";
-import Card from "@/models/Card";
+import CardPlayed from "../CardPlayed/CardPlayed.vue"
 import CardOfPlayer from "../CardComponent/CardComponent.vue";
 
 @Component({
     components: {
-        CardOfPlayer
+        CardOfPlayer,
+        CardPlayed
     }
 })
 export default class PlayerHand extends Vue {

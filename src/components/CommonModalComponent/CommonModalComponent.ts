@@ -9,6 +9,7 @@ export default class CommonModalComponent extends Vue {
     }
 
     public sendCardPlayedEvent() {
-        this.$emit("send-card-played", this.selectedTargetId);
+        if(this.selectedTargetId !== "")
+            this.$emit("send-card-played", this.selectedTargetId);
     }
 }

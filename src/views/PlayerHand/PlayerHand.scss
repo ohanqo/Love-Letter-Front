@@ -1,11 +1,20 @@
-#handcards{
-    width: 33%;
-    height: 50vh;
+.handcards{
     display: flex;
     flex-wrap:wrap ;
 }
 
-#card{
+.player_hand{
+    width: 33%;
+    height: 50vh;
+}
+
+.cards_played{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.card{
     position: relative;
     width: 110px;
     height: fit-content;
