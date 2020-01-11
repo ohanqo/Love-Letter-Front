@@ -32,6 +32,10 @@
             v-if="showGuardModal"
             v-on:send-card-played-guard="sendCardPlayedGuard"
          />
+
+         <PriestModalComponent
+            v-if="showPriestModal"
+         />
     </section>
 </template>
 

@@ -32,7 +32,7 @@ export default class CardComponent extends Vue {
             EventBus.$emit('display-guard-modal', cardPlayed);
         }
         else if (card.name === "Prêtre") {
-           console.log("Pretre");
+            EventBus.$emit('display-priest-modal', cardPlayed);
         }
         else if (card.isPassive) {
             this.socket.emit(Events.PlayCard, cardPlayed);
