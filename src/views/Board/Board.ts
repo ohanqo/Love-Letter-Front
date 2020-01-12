@@ -21,7 +21,6 @@ import CardPlayed from '../CardPlayed/CardPlayed';
         CommonModalComponent,
         GuardModalComponent,
         PriestModalComponent,
-        RoundEndedModalComponent
     }
 })
 export default class Board extends Vue {
@@ -30,10 +29,8 @@ export default class Board extends Vue {
     public showGuardModal = false;
     public showChancellorModal = false;
     public showPriestModal = false;
-    public showRoundEndedModal = false;
     public cardPlayed?: PlayCardDto;
     public targetCard: Card | null = null;
-    public alivePlayers: Player[] | null = null;
 
     public mounted() {
         this.socket.on(Events.CardPicked, (players: Player[]) => {
@@ -54,13 +51,6 @@ export default class Board extends Vue {
         this.socket.on(Events.ChancellorChooseCard, () => {
             if (this.currentPlayer.isPlayerTurn) 
                 this.showChancellorModal = true;
-        });
-
-        this.socket.on(Events.RoundEnded, (alivePlayers: Player[]) => {
-            console.log("Joueurs restant :" );
-            console.log(alivePlayers);
-            this.alivePlayers = alivePlayers;
-            this.showRoundEndedModal = true;
         });
 
         this.socket.on(Events.Message, ({ message, type }: Message) => {
@@ -134,11 +124,6 @@ export default class Board extends Vue {
     public closePriestModal(){
         this.showPriestModal = false;
         this.targetCard = null;
-    }
-
-    public closeRoundEndedModal(){
-        this.showRoundEndedModal = false;
-        this.alivePlayers = null;
     }
 
     public sendChancellorPlacedCards(placedCards: Card[]) {

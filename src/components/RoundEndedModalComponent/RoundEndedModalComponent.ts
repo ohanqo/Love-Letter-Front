@@ -14,7 +14,6 @@ export default class RoundEndedModalComponent extends Vue {
 
     public onLaunchButtonClick() {
         this.socket.emit(Events.Play);
-        this.$emit("close-round-ended-modal");
     }
 
     public get socket(): SocketIOClient.Socket {

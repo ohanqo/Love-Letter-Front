@@ -25,6 +25,7 @@
 
         <CommonModalComponent
             v-if="showCommonModal"
+            :cardPlayed="cardPlayed"
             v-on:send-card-played="sendCardPlayed"
          />
 
@@ -40,11 +41,6 @@
             :targetCard="targetCard"
          />
 
-         <RoundEndedModalComponent
-            v-if="showRoundEndedModal"
-            :alivePlayers="alivePlayers"
-            v-on:close-round-ended-modal="closeRoundEndedModal"
-         />
     </section>
 </template>
 
