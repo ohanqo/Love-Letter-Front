@@ -10,9 +10,7 @@
             <div class="positionHands">
                 <Hand v-for="(p, index) in players" :key="index" :player="p" />
             </div>
-            <div class="status_game">
-                {{ status }}
-            </div>
+            <div class="status_game">{{ status }}</div>
             <button @click="showAllCards" class="display-none btn-easy-win">
                 Easy win
             </button>
@@ -27,25 +25,24 @@
             v-if="showCommonModal"
             :cardPlayed="cardPlayed"
             v-on:send-card-played="sendCardPlayed"
-         />
+        />
 
-         <GuardModalComponent
+        <GuardModalComponent
             v-if="showGuardModal"
             v-on:send-card-played-guard="sendCardPlayedGuard"
-         />
+        />
 
-         <PriestModalComponent
+        <PriestModalComponent
             v-if="showPriestModal"
             v-on:send-card-played-priest="sendCardPlayedPriest"
             v-on:close-priest-modal="closePriestModal"
             :targetCard="targetCard"
-         />
+        />
 
         <RoundEndedModalComponent
             v-if="showRoundEndedModal"
             :alivePlayers="alivePlayers"
-         />
-
+        />
     </section>
 </template>
 

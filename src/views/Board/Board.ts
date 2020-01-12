@@ -10,9 +10,8 @@ import PriestModalComponent from "@/components/PriestModalComponent/PriestModalC
 import RoundEndedModalComponent from "@/components/RoundEndedModalComponent/RoundEndedModalComponent.vue";
 import Card from "@/models/Card";
 import Message from "@/models/Message";
-import PlayCardDto from '@/dto/PlayCardDto';
-import { EventBus } from '@/event-bus';
-import CardPlayed from '../CardPlayed/CardPlayed';
+import PlayCardDto from "@/dto/PlayCardDto";
+import { EventBus } from "@/event-bus";
 
 @Component({
     components: {
@@ -45,20 +44,16 @@ export default class Board extends Vue {
         });
 
         this.socket.on(Events.ShowTargetCard, (targetCard: Card | null) => {
-            if(targetCard === null)
-                this.closePriestModal();
-            else
-                this.targetCard = targetCard;
+            if (targetCard === null) this.closePriestModal();
+            else this.targetCard = targetCard;
         });
-        
+
         this.socket.on(Events.ChancellorChooseCard, () => {
-            if (this.currentPlayer.isPlayerTurn) 
+            if (this.currentPlayer.isPlayerTurn)
                 this.showChancellorModal = true;
         });
 
         this.socket.on(Events.RoundEnded, (alivePlayers: Player[]) => {
-            console.log("Joueurs restant :" );
-            console.log(alivePlayers);
             this.alivePlayers = alivePlayers;
             this.showRoundEndedModal = true;
         });
@@ -76,21 +71,21 @@ export default class Board extends Vue {
             this.alivePlayers = null;
         });
 
-        EventBus.$on('display-common-modal', (cardPlayed: PlayCardDto) => {
+        EventBus.$on("display-common-modal", (cardPlayed: PlayCardDto) => {
             if (this.currentPlayer.isPlayerTurn) {
                 this.showCommonModal = true;
                 this.cardPlayed = cardPlayed;
             }
         });
 
-        EventBus.$on('display-guard-modal', (cardPlayed: PlayCardDto) => {
+        EventBus.$on("display-guard-modal", (cardPlayed: PlayCardDto) => {
             if (this.currentPlayer.isPlayerTurn) {
                 this.showGuardModal = true;
                 this.cardPlayed = cardPlayed;
             }
         });
 
-        EventBus.$on('display-priest-modal', (cardPlayed: PlayCardDto) => {
+        EventBus.$on("display-priest-modal", (cardPlayed: PlayCardDto) => {
             if (this.currentPlayer.isPlayerTurn) {
                 this.showPriestModal = true;
                 this.cardPlayed = cardPlayed;
@@ -111,21 +106,24 @@ export default class Board extends Vue {
         }
     }
 
-    public sendCardPlayedGuard(selectedTargetId: string,selectedCardValue: string){
+    public sendCardPlayedGuard(
+        selectedTargetId: string,
+        selectedCardValue: string
+    ) {
         if (this.cardPlayed?.cardId) {
             const data: PlayCardDto = {
                 cardId: this.cardPlayed.cardId,
                 targetId: selectedTargetId,
                 guessCardName: selectedCardValue
             };
-    
+
             this.socket.emit(Events.PlayCard, data);
             this.showGuardModal = false;
             this.cardPlayed = undefined;
         }
     }
 
-    public sendCardPlayedPriest(selectedTargetId: string){
+    public sendCardPlayedPriest(selectedTargetId: string) {
         if (this.cardPlayed?.cardId) {
             const data: PlayCardDto = {
                 cardId: this.cardPlayed.cardId,
@@ -136,7 +134,7 @@ export default class Board extends Vue {
         }
     }
 
-    public closePriestModal(){
+    public closePriestModal() {
         this.showPriestModal = false;
         this.targetCard = null;
     }

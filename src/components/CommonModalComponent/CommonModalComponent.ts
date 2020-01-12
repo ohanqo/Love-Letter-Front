@@ -1,26 +1,32 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
-import Card from '@/models/Card';
-import Player from '@/models/Player';
+import PlayCardDto from "@/dto/PlayCardDto";
+import Player from "@/models/Player";
+import Card from "@/models/Card";
 
 @Component
 export default class CommonModalComponent extends Vue {
     @Prop({ required: true })
-    public cardPlayed!: Card;
+    public cardPlayed!: PlayCardDto;
 
     public selectedTargetId = "";
 
     public get players() {
         let players = this.$store.state.players;
+        const card = this.currentPlayer.cardsHand.find(
+            (c: Card) => c.id === this.cardPlayed.cardId
+        );
 
-        if(this.cardPlayed.name === "Roi") {
-            players = players.filter((p: Player) => p.id !== this.currentPlayer.id);
+        if (card.name === "Roi" || card.name === "Baron") {
+            players = players.filter(
+                (p: Player) => p.id !== this.currentPlayer.id
+            );
         }
-        console.log(players);    
+
         return players;
     }
 
     public sendCardPlayedEvent() {
-        if(this.selectedTargetId !== "")
+        if (this.selectedTargetId !== "")
             this.$emit("send-card-played", this.selectedTargetId);
     }
 
