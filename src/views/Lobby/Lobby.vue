@@ -44,11 +44,6 @@
                 Lancer la partie
             </button>
         </div>
-
-        <RoundEndedModalComponent
-            v-if="showRoundEndedModal"
-            :alivePlayers="alivePlayers"
-         />
     </section>
 </template>
 

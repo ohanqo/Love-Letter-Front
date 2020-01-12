@@ -41,6 +41,11 @@
             :targetCard="targetCard"
          />
 
+        <RoundEndedModalComponent
+            v-if="showRoundEndedModal"
+            :alivePlayers="alivePlayers"
+         />
+
     </section>
 </template>
 

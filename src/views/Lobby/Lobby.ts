@@ -2,17 +2,10 @@ import { Component, Vue } from "vue-property-decorator";
 import Events from "@/events/Events";
 import Player from "@/models/Player";
 import { SET_PLAYERS, SET_CURRENT_PLAYER_ID } from "@/store/types";
-import RoundEndedModalComponent from '@/components/RoundEndedModalComponent/RoundEndedModalComponent.vue';
 
-@Component({
-    components: {
-        RoundEndedModalComponent
-    }
-})
+@Component
 export default class Lobby extends Vue {
     public username = "";
-    public showRoundEndedModal = false;
-    public alivePlayers: Player[] | null = null;
 
     public mounted() {
         this.socket.on(Events.Players, (playerList: Player[]) => {
@@ -42,16 +35,6 @@ export default class Lobby extends Vue {
             if (this.$router.currentRoute.name !== "game") {
                 this.$router.replace({ name: "game" });
             }
-
-            this.showRoundEndedModal = false;
-            this.alivePlayers = null;
-        });
-
-        this.socket.on(Events.RoundEnded, (alivePlayers: Player[]) => {
-            console.log("Joueurs restant :");
-            console.log(alivePlayers);
-            this.alivePlayers = alivePlayers;
-            this.showRoundEndedModal = true;
         });
     }
 
