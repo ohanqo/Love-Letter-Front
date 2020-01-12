@@ -13,16 +13,17 @@
     display: flex;
     flex-wrap: wrap;
     padding: 0 15px 0 0;
-    .card{
-        width: 80px;
-        img{
-            width: 80px;
-            height: 115px;
-        }
-        &:hover{
-            border: none;
-            cursor: initial;
-        }
+}
+
+.played{
+    width: 80px !important;
+    img{
+        width: 80px !important;
+        height: 115px !important;
+    }
+    &:hover{
+        border: none !important;
+        cursor: initial !important;
     }
 }
 

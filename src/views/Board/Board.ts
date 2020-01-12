@@ -7,6 +7,7 @@ import ChancellorModalComponent from "@/components/ChancellorModalComponent/Chan
 import CommonModalComponent from "@/components/CommonModalComponent/CommonModalComponent.vue";
 import GuardModalComponent from "@/components/GuardModalComponent/GuardModalComponent.vue";
 import PriestModalComponent from "@/components/PriestModalComponent/PriestModalComponent.vue";
+import RoundEndedModalComponent from "@/components/RoundEndedModalComponent/RoundEndedModalComponent.vue";
 import Card from "@/models/Card";
 import Message from "@/models/Message";
 import PlayCardDto from '@/dto/PlayCardDto';
@@ -19,7 +20,8 @@ import CardPlayed from '../CardPlayed/CardPlayed';
         ChancellorModalComponent,
         CommonModalComponent,
         GuardModalComponent,
-        PriestModalComponent
+        PriestModalComponent,
+        RoundEndedModalComponent
     }
 })
 export default class Board extends Vue {
@@ -28,9 +30,10 @@ export default class Board extends Vue {
     public showGuardModal = false;
     public showChancellorModal = false;
     public showPriestModal = false;
+    public showRoundEndedModal = false;
     public cardPlayed?: PlayCardDto;
     public targetCard: Card | null = null;
-     
+    public alivePlayers: Player[] | null = null;
 
     public mounted() {
         this.socket.on(Events.CardPicked, (players: Player[]) => {
@@ -41,13 +44,23 @@ export default class Board extends Vue {
             this.$store.commit(SET_PLAYERS, players);
         });
 
-        this.socket.on(Events.ShowTargetCard, (targetCard: Card) => {
-            this.targetCard = targetCard;
+        this.socket.on(Events.ShowTargetCard, (targetCard: Card | null) => {
+            if(targetCard === null)
+                this.closePriestModal();
+            else
+                this.targetCard = targetCard;
         });
-
+        
         this.socket.on(Events.ChancellorChooseCard, () => {
             if (this.currentPlayer.isPlayerTurn) 
                 this.showChancellorModal = true;
+        });
+
+        this.socket.on(Events.RoundEnded, (alivePlayers: Player[]) => {
+            console.log("Joueurs restant :" );
+            console.log(alivePlayers);
+            this.alivePlayers = alivePlayers;
+            this.showRoundEndedModal = true;
         });
 
         this.socket.on(Events.Message, ({ message, type }: Message) => {
@@ -121,6 +134,11 @@ export default class Board extends Vue {
     public closePriestModal(){
         this.showPriestModal = false;
         this.targetCard = null;
+    }
+
+    public closeRoundEndedModal(){
+        this.showRoundEndedModal = false;
+        this.alivePlayers = null;
     }
 
     public sendChancellorPlacedCards(placedCards: Card[]) {

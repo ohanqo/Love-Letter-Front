@@ -39,6 +39,12 @@
             v-on:close-priest-modal="closePriestModal"
             :targetCard="targetCard"
          />
+
+         <RoundEndedModalComponent
+            v-if="showRoundEndedModal"
+            :alivePlayers="alivePlayers"
+            v-on:close-round-ended-modal="closeRoundEndedModal"
+         />
     </section>
 </template>
 

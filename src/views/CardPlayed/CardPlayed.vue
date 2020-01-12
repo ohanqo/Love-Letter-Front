@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card played">
         <img :src="'/assets/img/card_' + card.value + '.png'" />
     </div>
 </template>
