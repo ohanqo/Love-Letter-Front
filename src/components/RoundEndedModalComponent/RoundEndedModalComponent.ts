@@ -1,6 +1,6 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
-import Player from '@/models/Player';
-import CardPlayed from '@/views/CardPlayed/CardPlayed.vue';
+import Player from "@/models/Player";
+import CardPlayed from "@/views/CardPlayed/CardPlayed.vue";
 import Events from "@/events/Events";
 
 @Component({
@@ -20,4 +20,3 @@ export default class RoundEndedModalComponent extends Vue {
         return this.$store.state.socket;
     }
 }
-

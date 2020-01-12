@@ -1,6 +1,6 @@
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import Player from "@/models/Player";
-import CardPlayed from "../CardPlayed/CardPlayed.vue"
+import CardPlayed from "../CardPlayed/CardPlayed.vue";
 import CardOfPlayer from "../CardComponent/CardComponent.vue";
 
 @Component({

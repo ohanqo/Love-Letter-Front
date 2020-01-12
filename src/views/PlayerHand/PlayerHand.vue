@@ -13,9 +13,9 @@
         </div>
         <div class="cards_played">
             <CardPlayed
-            v-for="(cardPlayed, index) in player.consumedCards"
-            :key="index"
-            :card="cardPlayed"
+                v-for="(cardPlayed, index) in player.consumedCards"
+                :key="index"
+                :card="cardPlayed"
             />
         </div>
     </div>

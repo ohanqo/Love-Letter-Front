@@ -4,7 +4,7 @@ import Events from "@/events/Events";
 import PlayCardDto from "@/dto/PlayCardDto";
 import Player from "@/models/Player";
 import { GET_PLAYER_WHO_HAS_TO_PLAY } from "@/store/types";
-import { EventBus } from '@/event-bus';
+import { EventBus } from "@/event-bus";
 
 @Component
 export default class CardComponent extends Vue {
@@ -27,21 +27,16 @@ export default class CardComponent extends Vue {
         this.selectedCard();
         if (card.name === "Chancelier") {
             this.socket.emit(Events.PlayChancellorCard, cardPlayed);
-        } 
-        else if (card.name === "Garde") {
-            EventBus.$emit('display-guard-modal', cardPlayed);
-        }
-        else if (card.name === "Prêtre") {
-            EventBus.$emit('display-priest-modal', cardPlayed);
-        }
-        else if (card.isPassive) {
+        } else if (card.name === "Garde") {
+            EventBus.$emit("display-guard-modal", cardPlayed);
+        } else if (card.name === "Prêtre") {
+            EventBus.$emit("display-priest-modal", cardPlayed);
+        } else if (card.isPassive) {
             this.socket.emit(Events.PlayCard, cardPlayed);
         } else {
-            EventBus.$emit('display-common-modal', cardPlayed);
+            EventBus.$emit("display-common-modal", cardPlayed);
         }
     }
-
-
 
     public selectedCard() {
         if (this.connectedPlayer.id === this.playerWhoHasToPlay.id) {

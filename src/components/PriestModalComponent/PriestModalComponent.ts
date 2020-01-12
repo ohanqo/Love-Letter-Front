@@ -1,8 +1,7 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
-import Card from '@/models/Card';
-import CardPlayed from '@/views/CardPlayed/CardPlayed.vue';
-import Player from '@/models/Player';
-
+import Card from "@/models/Card";
+import CardPlayed from "@/views/CardPlayed/CardPlayed.vue";
+import Player from "@/models/Player";
 
 @Component({
     components: {
@@ -21,11 +20,11 @@ export default class PriestModalComponent extends Vue {
     }
 
     public sendCardPlayedEvent() {
-        if(this.selectedTargetId !== "")
+        if (this.selectedTargetId !== "")
             this.$emit("send-card-played-priest", this.selectedTargetId);
     }
 
-    public closePriestModal(){
+    public closePriestModal() {
         this.$emit("close-priest-modal");
     }
 
