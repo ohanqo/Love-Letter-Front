@@ -4,11 +4,28 @@ import { InteractEvent } from "@interactjs/types/types";
 import gsap from "gsap";
 import Card from "@/models/Card";
 import Player from "@/models/Player";
-import { findIndex, cloneDeep } from "lodash";
+
+interface PlacedCard {
+    index: number;
+    card: Card | null;
+}
 
 @Component
 export default class ChancellorModalComponent extends Vue {
-    public placedCards: Card[] = [];
+    public placedCards: PlacedCard[] = [
+        {
+            index: 0,
+            card: null
+        },
+        {
+            index: 1,
+            card: null
+        },
+        {
+            index: 2,
+            card: null
+        }
+    ];
 
     public mounted() {
         this.initCardsDropzone();
@@ -16,11 +33,21 @@ export default class ChancellorModalComponent extends Vue {
     }
 
     public emitPlacedCards() {
-        this.$emit("send-chancellor-placed-cards", cloneDeep(this.placedCards));
+        const cleanCards = this.placedCards
+            .filter(({ card }: PlacedCard) => card !== null)
+            .map(({ card }: PlacedCard) => card);
+
+        this.$emit("send-chancellor-placed-cards", cleanCards);
     }
 
     public get hasPlacedAllCards(): boolean {
-        return this.placedCards.length >= this.connectedPlayer.cardsHand.length;
+        let numberOfPlacedCards = 0;
+
+        this.placedCards.forEach(({ card }: PlacedCard) => {
+            if (card) numberOfPlacedCards++;
+        });
+
+        return numberOfPlacedCards >= this.connectedPlayer.cardsHand.length;
     }
 
     private initCardsDropzone() {
@@ -81,7 +108,7 @@ export default class ChancellorModalComponent extends Vue {
         dropzoneIndex: number
     ): boolean {
         const card = this.findCardById(event.target.id);
-        return this.placedCards[dropzoneIndex] === card ? true : false;
+        return this.placedCards[dropzoneIndex].card === card ? true : false;
     }
 
     private assignCardToDropzoneIndex(
@@ -93,7 +120,7 @@ export default class ChancellorModalComponent extends Vue {
 
         if (card) {
             this.removeCardFromPlacedCards(card);
-            this.placedCards.splice(dropzoneIndex, 1, card);
+            this.placedCards[dropzoneIndex].card = card;
         } else {
             alert("Une erreur est survenue lors du placement de la carte.");
         }
@@ -103,10 +130,10 @@ export default class ChancellorModalComponent extends Vue {
         return this.connectedPlayer.cardsHand.find((c: Card) => c.id === id);
     }
 
-    private removeCardFromPlacedCards(card: Card) {
-        this.placedCards.map((c: Card, index: number) => {
-            if (c.id === card.id) {
-                this.placedCards.splice(index, 1);
+    private removeCardFromPlacedCards(cardToRemove: Card) {
+        this.placedCards.map((placedCard: PlacedCard) => {
+            if (placedCard.card?.id === cardToRemove.id) {
+                placedCard.card = null;
             }
         });
     }
@@ -118,17 +145,17 @@ export default class ChancellorModalComponent extends Vue {
 
     private removePotentialPlacedCard(event: InteractEvent) {
         const potentialPlacedCardId = event.target.id;
-        const potentialPlacedCardIndex = findIndex(this.placedCards, {
-            id: potentialPlacedCardId
-        });
+        const potentialPlacedCard = this.placedCards.find(
+            ({ card }: PlacedCard) => card?.id === potentialPlacedCardId
+        );
 
-        if (potentialPlacedCardIndex !== -1) {
-            this.placedCards.splice(potentialPlacedCardIndex, 1);
+        if (potentialPlacedCard) {
+            potentialPlacedCard.card = null;
         }
     }
 
     private isDropzoneEmpty(index: number): boolean {
-        return this.placedCards[index] ? false : true;
+        return this.placedCards[index].card === null ? true : false;
     }
 
     private moveTargetTo(target: Interact.Element, x: number, y: number) {
