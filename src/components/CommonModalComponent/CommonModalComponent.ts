@@ -7,7 +7,6 @@ import Card from "@/models/Card";
 export default class CommonModalComponent extends Vue {
     @Prop({ required: true })
     public cardPlayed!: PlayCardDto;
-
     public selectedTargetId = "";
 
     public get players() {

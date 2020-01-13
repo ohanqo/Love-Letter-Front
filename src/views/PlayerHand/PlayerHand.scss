@@ -1,68 +1,68 @@
 .handcards {
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 185px;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 185px;
 }
 
 .player_hand {
-    width: 33%;
-    height: 50vh;
-    .container_player {
-        margin: 10px 5px -5px 5px;
-        padding: 5px 20px;
-        width: fit-content;
-        min-width: 110px;
-        border: 1px solid gold;
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 6px;
-        p {
-            color: white;
-            text-align: center;
-        }
+  width: 33%;
+  height: 50vh;
+  .container_player {
+    margin: 10px 5px -5px 5px;
+    padding: 5px 20px;
+    width: fit-content;
+    min-width: 110px;
+    border: 1px solid gold;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    p {
+      color: white;
+      text-align: center;
     }
+  }
 }
 
 .cards_played {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 15px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 15px 0 0;
 }
 
 .played {
-    border: none !important;
+  border: none !important;
+  width: 80px !important;
+  img {
     width: 80px !important;
-    img {
-        width: 80px !important;
-        height: 115px !important;
-    }
-    &:hover {
-        border: none !important;
-        cursor: initial !important;
-    }
+    height: 115px !important;
+  }
+  &:hover {
+    border: none !important;
+    cursor: initial !important;
+  }
 }
 
 .card {
-    position: relative;
-    width: 110px;
-    height: fit-content;
+  position: relative;
+  width: 110px;
+  height: fit-content;
+  border-radius: 4px;
+  margin: 15px 5px;
+  z-index: 5;
+  border: 1px solid white;
+  img {
     border-radius: 4px;
-    margin: 15px 5px;
-    z-index: 5;
-    border: 1px solid transparent;
-    img {
-        border-radius: 4px;
-        width: 110px;
-        height: 155px;
-    }
-    &:hover {
-        border: 1px solid white;
-        cursor: pointer;
-    }
+    width: 110px;
+    height: 155px;
+  }
+  &:hover {
+    border: 1px solid gold;
+    cursor: pointer;
+  }
 }
 
 .selected {
-    border: 2px solid blueviolet;
-    &:hover {
-        border: 2px solid blueviolet !important;
-    }
+  border: 2px solid blueviolet;
+  &:hover {
+    border: 2px solid blueviolet !important;
+  }
 }

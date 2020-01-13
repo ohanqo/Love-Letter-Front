@@ -24,7 +24,6 @@ export default class CardComponent extends Vue {
         const cardPlayed: PlayCardDto = {
             cardId: card.id
         };
-        this.selectedCard();
         if (card.name === "Chancelier") {
             this.socket.emit(Events.PlayChancellorCard, cardPlayed);
         } else if (card.name === "Garde") {
@@ -35,12 +34,6 @@ export default class CardComponent extends Vue {
             this.socket.emit(Events.PlayCard, cardPlayed);
         } else {
             EventBus.$emit("display-common-modal", cardPlayed);
-        }
-    }
-
-    public selectedCard() {
-        if (this.connectedPlayer.id === this.playerWhoHasToPlay.id) {
-            this.$emit("update-selected-card");
         }
     }
 

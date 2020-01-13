@@ -10,8 +10,6 @@
                 :showCard="showCard"
                 :card="card"
                 :player="player"
-                :isSelected="index === cardSelectedIndex ? true : false"
-                v-on:update-selected-card="updateSelectedCard(index)"
             />
         </div>
         <div class="cards_played">

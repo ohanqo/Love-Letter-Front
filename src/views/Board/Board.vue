@@ -3,7 +3,7 @@
         <div class="vertical-center v-100vh">
             <img
                 class="bg-board"
-                src="/assets/img/bg-board-2.png"
+                src="/assets/img/border-love-letter.png"
                 alt="Table de jeu"
             />
             <button class="deck" @click="pickCard"></button>

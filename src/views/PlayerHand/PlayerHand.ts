@@ -29,10 +29,6 @@ export default class PlayerHand extends Vue {
         else this.showCard = false;
     }
 
-    updateSelectedCard(newIndex: number) {
-        this.cardSelectedIndex = newIndex;
-    }
-
     get currentPlayer() {
         return this.$store.getters.GET_CONNECTED_PLAYER;
     }
