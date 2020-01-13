@@ -45,6 +45,7 @@ export default class Lobby extends Vue {
     public valideInputName(e: any) {
         if (e.keyCode === 13) {
             this.onPlayClick();
+            this.username = "";
         }
     }
 

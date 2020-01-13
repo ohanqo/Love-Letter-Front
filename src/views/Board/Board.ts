@@ -32,7 +32,7 @@ export default class Board extends Vue {
     public showChancellorModal = false;
     public showPriestModal = false;
     public showRoundEndedModal = false;
-    public showGameEndedModal = true;
+    public showGameEndedModal = false;
     public cardPlayed?: PlayCardDto;
     public targetCard: Card | null = null;
     public alivePlayers: Player[] | null = null;
