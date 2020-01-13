@@ -8,6 +8,7 @@ import CommonModalComponent from "@/components/CommonModalComponent/CommonModalC
 import GuardModalComponent from "@/components/GuardModalComponent/GuardModalComponent.vue";
 import PriestModalComponent from "@/components/PriestModalComponent/PriestModalComponent.vue";
 import RoundEndedModalComponent from "@/components/RoundEndedModalComponent/RoundEndedModalComponent.vue";
+import GameEndedModalComponent from "@/components/GameEndedModalComponent/GameEndedModalComponent.vue";
 import Card from "@/models/Card";
 import Message from "@/models/Message";
 import PlayCardDto from "@/dto/PlayCardDto";
@@ -20,7 +21,8 @@ import { EventBus } from "@/event-bus";
         CommonModalComponent,
         GuardModalComponent,
         PriestModalComponent,
-        RoundEndedModalComponent
+        RoundEndedModalComponent,
+        GameEndedModalComponent
     }
 })
 export default class Board extends Vue {
@@ -30,9 +32,11 @@ export default class Board extends Vue {
     public showChancellorModal = false;
     public showPriestModal = false;
     public showRoundEndedModal = false;
+    public showGameEndedModal = true;
     public cardPlayed?: PlayCardDto;
     public targetCard: Card | null = null;
     public alivePlayers: Player[] | null = null;
+    public winners: Player[] | null = null;
 
     public mounted() {
         this.socket.on(Events.CardPicked, (players: Player[]) => {
@@ -56,6 +60,12 @@ export default class Board extends Vue {
         this.socket.on(Events.RoundEnded, (alivePlayers: Player[]) => {
             this.alivePlayers = alivePlayers;
             this.showRoundEndedModal = true;
+        });
+
+        this.socket.on(Events.GameEnded, (winners: Player[]) => {
+            this.winners = winners;
+            this.showRoundEndedModal = false;
+            this.showGameEndedModal = true;
         });
 
         this.socket.on(Events.Message, ({ message, type }: Message) => {

@@ -1,19 +1,13 @@
 <template>
     <section id="board">
         <div class="vertical-center v-100vh">
-            <img
-                class="bg-board"
-                src="/assets/img/bg-board-2.png"
-                alt="Table de jeu"
-            />
+            <img class="bg-board" src="/assets/img/bg-board-2.png" alt="Table de jeu" />
             <button class="deck" @click="pickCard"></button>
             <div class="positionHands">
                 <Hand v-for="(p, index) in players" :key="index" :player="p" />
             </div>
             <div class="status_game">{{ status }}</div>
-            <button @click="showAllCards" class="display-none btn-easy-win">
-                Easy win
-            </button>
+            <button @click="showAllCards" class="display-none btn-easy-win">Easy win</button>
         </div>
 
         <ChancellorModalComponent
@@ -39,10 +33,9 @@
             :targetCard="targetCard"
         />
 
-        <RoundEndedModalComponent
-            v-if="showRoundEndedModal"
-            :alivePlayers="alivePlayers"
-        />
+        <RoundEndedModalComponent v-if="showRoundEndedModal" :alivePlayers="alivePlayers" />
+
+        <GameEndedModalComponent v-if="showGameEndedModal" :winners="winners" />
     </section>
 </template>
 

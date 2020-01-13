@@ -8,17 +8,9 @@ import Events from "@/events/Events";
         CardPlayed
     }
 })
-export default class RoundEndedModalComponent extends Vue {
-    @Prop({ default: null })
-    public alivePlayers?: Player[] | null;
-
-    public onLaunchButtonClick() {
-        this.socket.emit(Events.Play);
-    }
-
-    public get socket(): SocketIOClient.Socket {
-        return this.$store.state.socket;
-    }
+export default class GameEndedModalComponent extends Vue {
+    @Prop({ required: true })
+    public winners!: Player[];
 
     public get players() {
         return this.$store.state.players;

@@ -11,6 +11,7 @@
         >
             <input
                 v-model="username"
+                v-on:keyup="valideInputName"
                 class="bg-white rounded text-xl p-2 w-1/2 mb-12"
                 placeholder="Pseudo"
                 type="text"

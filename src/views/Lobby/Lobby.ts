@@ -42,6 +42,12 @@ export default class Lobby extends Vue {
         this.socket.emit(Events.PlayerConnect, this.username);
     }
 
+    public valideInputName(e: any) {
+        if (e.keyCode === 13) {
+            this.onPlayClick();
+        }
+    }
+
     public onLaunchButtonClick() {
         this.socket.emit(Events.Play);
     }

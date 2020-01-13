@@ -1,5 +1,8 @@
 <template>
     <div class="player_hand">
+        <div class="container_player">
+            <p>{{ player.name | capitalize }}</p>
+        </div>
         <div class="handcards">
             <CardOfPlayer
                 v-for="(card, index) in player.cardsHand"

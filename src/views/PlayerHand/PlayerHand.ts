@@ -1,4 +1,4 @@
-import { Component, Vue, Prop, Watch } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import Player from "@/models/Player";
 import CardPlayed from "../CardPlayed/CardPlayed.vue";
 import CardOfPlayer from "../CardComponent/CardComponent.vue";
@@ -7,6 +7,13 @@ import CardOfPlayer from "../CardComponent/CardComponent.vue";
     components: {
         CardOfPlayer,
         CardPlayed
+    },
+    filters: {
+        capitalize: function(value: any) {
+            if (!value) return "";
+            value = value.toString();
+            return value.charAt(0).toUpperCase() + value.slice(1);
+        }
     }
 })
 export default class PlayerHand extends Vue {

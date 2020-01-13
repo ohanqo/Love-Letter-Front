@@ -4,13 +4,13 @@
         <div class="relative">
             <h2
                 class="w-full my-2 text-2xl leading-tight text-center text-white"
-            >La manche est terminée !</h2>
+            >La partie est terminée !</h2>
             <p
                 class="w-full my-2 text-2xl leading-tight text-center text-white"
-            >Liste des joueurs encore en vie :</p>
+            >Le(s) joueur(s) gagnant :</p>
             <div class="flex justify-center items-center">
                 <div
-                    v-for="(p, index) in alivePlayers"
+                    v-for="(p, index) in winners"
                     :key="index"
                     class="max-w-sm w-full lg:max-w-full lg:flex m-2"
                 >
@@ -30,25 +30,13 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <table>
-                    <tr>
-                        <th>Joueurs</th>
-                        <th>Score</th>
-                    </tr>
-                    <tr v-for="(p, index) in players" :key="index">
-                        <td>{{ p.name }}</td>
-                        <td>{{ p.points }}</td>
-                    </tr>
-                </table>
-            </div>
             <button
-                @click="onLaunchButtonClick"
                 class="block border border-white mt-5 mx-auto px-5 py-2 rounded text-white disabled:opacity-50"
             >Rejouer</button>
         </div>
     </div>
 </template>
 
-<script lang="ts" src="./RoundEndedModalComponent.ts" />
-<style lang="scss" src="./RoundEndedModalComponent.scss" />
+
+<script lang="ts" src="./GameEndedModalComponent.ts" />
+<style lang="scss" src="./GameEndedModalComponent.scss" />
