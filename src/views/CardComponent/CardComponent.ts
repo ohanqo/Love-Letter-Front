@@ -17,9 +17,6 @@ export default class CardComponent extends Vue {
     @Prop({ required: true })
     public player!: Player;
 
-    @Prop({ required: true })
-    public isSelected!: boolean;
-
     public playCard(card: Card) {
         const cardPlayed: PlayCardDto = {
             cardId: card.id

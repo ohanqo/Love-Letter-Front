@@ -1,5 +1,5 @@
 <template>
-    <div @click="playCard(card)" class="card" :class="{ selected: isSelected }">
+    <div @click="playCard(card)" class="card">
         <img v-if="showCard" :src="'/assets/img/card_' + card.value + '.png'" />
         <img v-else src="/assets/img/back_card.png" />
     </div>

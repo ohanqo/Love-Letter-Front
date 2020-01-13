@@ -13,6 +13,7 @@ import Card from "@/models/Card";
 import Message from "@/models/Message";
 import PlayCardDto from "@/dto/PlayCardDto";
 import { EventBus } from "@/event-bus";
+import RoundResultDto from "@/dto/RoundResultDto";
 
 @Component({
     components: {
@@ -35,8 +36,7 @@ export default class Board extends Vue {
     public showGameEndedModal = false;
     public cardPlayed?: PlayCardDto;
     public targetCard: Card | null = null;
-    public alivePlayers: Player[] | null = null;
-    public winners: Player[] | null = null;
+    public roundResult: RoundResultDto | null = null;
 
     public mounted() {
         this.socket.on(Events.CardPicked, (players: Player[]) => {
@@ -57,13 +57,13 @@ export default class Board extends Vue {
                 this.showChancellorModal = true;
         });
 
-        this.socket.on(Events.RoundEnded, (alivePlayers: Player[]) => {
-            this.alivePlayers = alivePlayers;
+        this.socket.on(Events.RoundEnded, (roundResult: RoundResultDto) => {
+            this.roundResult = roundResult;
             this.showRoundEndedModal = true;
         });
 
-        this.socket.on(Events.GameEnded, (winners: Player[]) => {
-            this.winners = winners;
+        this.socket.on(Events.GameEnded, (roundResult: RoundResultDto) => {
+            this.roundResult = roundResult;
             this.showRoundEndedModal = false;
             this.showGameEndedModal = true;
         });
@@ -78,7 +78,7 @@ export default class Board extends Vue {
 
         this.socket.on(Events.StartRound, (players: Player[]) => {
             this.showRoundEndedModal = false;
-            this.alivePlayers = null;
+            this.roundResult = null;
         });
 
         EventBus.$on("display-common-modal", (cardPlayed: PlayCardDto) => {

@@ -41,10 +41,13 @@
 
         <RoundEndedModalComponent
             v-if="showRoundEndedModal"
-            :alivePlayers="alivePlayers"
+            :roundResult="roundResult"
         />
 
-        <GameEndedModalComponent v-if="showGameEndedModal" :winners="winners" />
+        <GameEndedModalComponent
+            v-if="showGameEndedModal"
+            :roundResult="roundResult"
+        />
     </section>
 </template>
 

@@ -1,7 +1,6 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
-import Player from "@/models/Player";
 import CardPlayed from "@/views/CardPlayed/CardPlayed.vue";
-import Events from "@/events/Events";
+import RoundResultDto from "@/dto/RoundResultDto";
 
 @Component({
     components: {
@@ -9,8 +8,8 @@ import Events from "@/events/Events";
     }
 })
 export default class GameEndedModalComponent extends Vue {
-    @Prop({ required: true })
-    public winners!: Player[];
+    @Prop({ default: null })
+    public roundResult?: RoundResultDto | null;
 
     public get players() {
         return this.$store.state.players;
