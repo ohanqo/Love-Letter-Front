@@ -38,6 +38,9 @@ export default class ChancellorModalComponent extends Vue {
             .map(({ card }: PlacedCard) => card);
 
         this.$emit("send-chancellor-placed-cards", cleanCards);
+        this.resetPlacedCards();
+        this.resetCardsDropzone();
+        this.resetDraggableCards();
     }
 
     public get hasPlacedAllCards(): boolean {
@@ -62,6 +65,16 @@ export default class ChancellorModalComponent extends Vue {
             onmove: this.onDraggableCardMove,
             onend: this.onDraggableCardDrop
         });
+
+        interact.dynamicDrop(true);
+    }
+
+    private resetCardsDropzone() {
+        interact(".is-dropzone").unset();
+    }
+
+    private resetDraggableCards() {
+        interact(".is-draggable").unset();
     }
 
     private onDraggableCardMove(event: InteractEvent) {
@@ -167,6 +180,10 @@ export default class ChancellorModalComponent extends Vue {
 
         target.setAttribute("data-x", `${x}`);
         target.setAttribute("data-y", `${y}`);
+    }
+
+    private resetPlacedCards() {
+        this.placedCards.map((p: PlacedCard) => (p.card = null));
     }
 
     private isOverlappingDropzone(event: InteractEvent) {
