@@ -1,7 +1,10 @@
 <template>
     <div class="player_hand">
-        <div class="container_player">
-            <p>{{ player.name | capitalize }}</p>
+        <div class="container_player" :style="{ borderColor: player.color }">
+            <p v-if="currentPlayer.id === player.id">
+                Vous
+            </p>
+            <p v-else>{{ player.name | capitalize }}</p>
         </div>
         <div class="handcards">
             <CardOfPlayer

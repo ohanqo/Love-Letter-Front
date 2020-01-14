@@ -1,11 +1,11 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
-import CardPlayed from "@/views/CardPlayed/CardPlayed.vue";
 import Events from "@/events/Events";
 import RoundResultDto from "@/dto/RoundResultDto";
+import PlayerCardComponent from "@/components/PlayerCardComponent/PlayerCardComponent.vue";
 
 @Component({
     components: {
-        CardPlayed
+        PlayerCardComponent
     }
 })
 export default class RoundEndedModalComponent extends Vue {
@@ -18,9 +18,5 @@ export default class RoundEndedModalComponent extends Vue {
 
     public get socket(): SocketIOClient.Socket {
         return this.$store.state.socket;
-    }
-
-    public get players() {
-        return this.$store.state.players;
     }
 }
