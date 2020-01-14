@@ -1,4 +1,4 @@
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import Hand from "../PlayerHand/PlayerHand.vue";
 import Events from "@/events/Events";
 import Player from "@/models/Player";
@@ -158,10 +158,6 @@ export default class Board extends Vue {
         this.showChancellorModal = false;
     }
 
-    public showAllCards() {
-        console.log("Win");
-    }
-
     public pickCard() {
         if (this.currentPlayer.isPlayerTurn) {
             this.socket.emit(Events.Pick);
@@ -182,17 +178,5 @@ export default class Board extends Vue {
 
     get playerWhoHasToPlay(): Player | undefined {
         return this.$store.getters.GET_PLAYER_WHO_HAS_TO_PLAY;
-    }
-
-    @Watch("playerWhoHasToPlay", { immediate: true, deep: true })
-    onPlayerWhoHasToPlayChanged(
-        val: Player | undefined,
-        old: Player | undefined
-    ) {
-        if (val) {
-            if (this.currentPlayer.isPlayerTurn && val.id !== old?.id) {
-                console.log("jeton");
-            }
-        }
     }
 }

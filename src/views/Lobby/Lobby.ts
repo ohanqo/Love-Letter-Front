@@ -29,7 +29,6 @@ export default class Lobby extends Vue {
         });
 
         this.socket.on(Events.StartRound, (players: Player[]) => {
-            console.log(players);
             this.$store.commit(SET_PLAYERS, players);
 
             if (this.$router.currentRoute.name !== "game") {
