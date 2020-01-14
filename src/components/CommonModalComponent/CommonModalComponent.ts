@@ -17,6 +17,7 @@ export default class CommonModalComponent extends Vue {
                 (p: Player) => p.id !== this.currentPlayer.id
             );
         }
+        players = players.filter((p: Player) => p.hasLost === false);
 
         return players;
     }

@@ -22,7 +22,7 @@
                         :key="index"
                         :src="`/assets/img/card_${card.value}.png`"
                         :id="card.id"
-                        class="size-card mr-4 is-draggable"
+                        class="size-card mx-2 is-draggable"
                     />
                 </div>
 

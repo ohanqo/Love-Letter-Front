@@ -15,7 +15,8 @@ export default class PriestModalComponent extends Vue {
     public selectedTargetId = "";
 
     public get players() {
-        const players = this.$store.state.players;
+        let players = this.$store.state.players;
+        players = players.filter((p: Player) => p.hasLost === false);
         return players.filter((p: Player) => p.id !== this.currentPlayer.id);
     }
 

@@ -5,9 +5,21 @@ import Player from "@/models/Player";
 export default class GuardModalComponent extends Vue {
     public selectedTargetId = "";
     public selectedCardValue = "";
+    public cards = [
+        "Espionne",
+        "Prêtre",
+        "Baron",
+        "Servante",
+        "Prince",
+        "Chancelier",
+        "Roi",
+        "Comtesse",
+        "Princesse"
+    ];
 
     public get players() {
-        const players = this.$store.state.players;
+        let players = this.$store.state.players;
+        players = players.filter((p: Player) => p.hasLost === false);
         return players.filter((p: Player) => p.id !== this.currentPlayer.id);
     }
 
