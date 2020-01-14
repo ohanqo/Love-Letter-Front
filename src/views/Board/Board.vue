@@ -6,7 +6,7 @@
                 src="/assets/img/border-love-letter.png"
                 alt="Table de jeu"
             />
-            <button class="deck" @click="pickCard"></button>
+            <button class="deck" @click="pickCard">{{ NumberOfCard }}</button>
             <div class="positionHands">
                 <Hand v-for="(p, index) in players" :key="index" :player="p" />
             </div>

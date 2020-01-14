@@ -38,6 +38,7 @@ export default class Board extends Vue {
     public cardPlayed?: PlayCardDto;
     public targetCard: Card | null = null;
     public roundResult: RoundResultDto | null = null;
+    public NumberOfCard = 18;
 
     public mounted() {
         this.socket.on(Events.CardPicked, (players: Player[]) => {
@@ -80,6 +81,10 @@ export default class Board extends Vue {
         this.socket.on(Events.StartRound, (players: Player[]) => {
             this.showRoundEndedModal = false;
             this.roundResult = null;
+        });
+
+        this.socket.on(Events.NumberOfCardsLeft, (NumberOfCard: number) => {
+            this.NumberOfCard = NumberOfCard;
         });
 
         EventBus.$on("display-common-modal", (cardPlayed: PlayCardDto) => {

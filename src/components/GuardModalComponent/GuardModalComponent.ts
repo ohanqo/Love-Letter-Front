@@ -17,10 +17,8 @@ export default class GuardModalComponent extends Vue {
         "Princesse"
     ];
 
-    public get players() {
-        let players = this.$store.state.players;
-        players = players.filter((p: Player) => p.hasLost === false);
-        return players.filter((p: Player) => p.id !== this.currentPlayer.id);
+    public get aliveOpponents() {
+        return this.$store.getters.GET_ALIVE_OPPONENTS;
     }
 
     public sendCardPlayedEvent() {

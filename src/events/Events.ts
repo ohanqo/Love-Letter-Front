@@ -18,5 +18,6 @@ export default {
     PlayPriestCard: "PlayPriestCard",
     ShowTargetCard: "ShowTargetCard",
     RoundEnded: "RoundEnded",
-    GameEnded: "GameEnded"
+    GameEnded: "GameEnded",
+    NumberOfCardsLeft: "NumberOfCardsLeft"
 };
