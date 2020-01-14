@@ -10,6 +10,9 @@
             <div class="positionHands">
                 <Hand v-for="(p, index) in players" :key="index" :player="p" />
             </div>
+            <div class="container-status-game">
+                <div class="score">{{ currentPlayer.points }}</div>
+            </div>
             <div class="status_game">{{ status }}</div>
             <button @click="showAllCards" class="display-none btn-easy-win">
                 Easy win

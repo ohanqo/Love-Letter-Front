@@ -11,10 +11,7 @@ export default class CommonModalComponent extends Vue {
 
     public get players() {
         let players = this.$store.state.players;
-        const card = this.currentPlayer.cardsHand.find(
-            (c: Card) => c.id === this.cardPlayed.cardId
-        );
-
+        const card = this.currentCard;
         if (card.name === "Roi" || card.name === "Baron") {
             players = players.filter(
                 (p: Player) => p.id !== this.currentPlayer.id
@@ -31,5 +28,11 @@ export default class CommonModalComponent extends Vue {
 
     get currentPlayer() {
         return this.$store.getters.GET_CONNECTED_PLAYER;
+    }
+
+    public get currentCard() {
+        return this.currentPlayer.cardsHand.find(
+            (c: Card) => c.id === this.cardPlayed.cardId
+        );
     }
 }

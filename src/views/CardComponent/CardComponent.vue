@@ -1,7 +1,7 @@
 <template>
     <div @click="playCard(card)" class="card">
         <img v-if="showCard" :src="'/assets/img/card_' + card.value + '.png'" />
-        <img v-else src="/assets/img/back_card.png" />
+        <img v-else src="/assets/img/back_card_2.png" />
     </div>
 </template>
 

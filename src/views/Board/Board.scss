@@ -36,7 +36,7 @@
 }
 
 .deck {
-  background: url("/assets/img/back_card.png") no-repeat center;
+  background: url("/assets/img/back_card_2.png") no-repeat center;
   background-size: 100px auto;
   width: 100px;
   height: 150px;
@@ -53,12 +53,52 @@
     border: 1px solid gold;
     border-radius: 4px;
   }
+  &:after {
+    content: "Pioche";
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -23px;
+  }
+}
+
+.container-status-game {
+  position: fixed;
+  width: 100%;
+  height: 75px;
+  bottom: 30px;
+  left: 0;
+  .score {
+    color: gold;
+    font-family: "font-calli";
+    font-size: 24px;
+    background-color: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 2rem;
+    padding: 8px 15px;
+    border: 1px solid goldenrod;
+    margin: 10px auto 0 auto;
+    text-align: center;
+    &:after {
+      content: "Score";
+      color: white;
+      font-size: 18px;
+      font-family: initial;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -8px;
+    }
+  }
 }
 
 .status_game {
   position: fixed;
-  bottom: 5px;
-  left: 5px;
+  bottom: 45px;
+  left: 45px;
   width: auto;
   padding: 10px;
   color: white;
