@@ -1,6 +1,10 @@
 <template>
     <div class="player_hand">
-        <div class="container_player" :style="{ borderColor: player.color }">
+        <div
+            class="container_player"
+            :class="{ turnOf: isPlayerTurn }"
+            :style="{ borderColor: player.color }"
+        >
             <p v-if="currentPlayer.id === player.id">
                 Vous
             </p>

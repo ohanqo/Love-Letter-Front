@@ -13,21 +13,6 @@
             <div class="container-status-game">
                 <div class="score">{{ currentPlayer.points }}</div>
             </div>
-            <div class="status_game">{{ status }}</div>
-            <button @click="showAllCards" class="display-none btn-easy-win">
-                Easy win
-            </button>
-            <div
-                v-if="showTurnOf"
-                class="z-10 absolute top-0 right-0 bottom-0 left-0 flex justify-center items-center animation-turnof"
-            >
-                <div
-                    class="absolute w-full h-full bg-gray-900 opacity-50"
-                ></div>
-                <div class="relative">
-                    <img src="/assets/img/turnof.png" />
-                </div>
-            </div>
         </div>
 
         <ChancellorModalComponent

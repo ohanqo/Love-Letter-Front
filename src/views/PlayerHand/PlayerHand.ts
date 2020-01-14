@@ -29,7 +29,15 @@ export default class PlayerHand extends Vue {
         else this.showCard = false;
     }
 
-    get currentPlayer() {
+    get currentPlayer(): Player {
         return this.$store.getters.GET_CONNECTED_PLAYER;
+    }
+
+    get playerWhoHasToPlay(): Player {
+        return this.$store.getters.GET_PLAYER_WHO_HAS_TO_PLAY;
+    }
+
+    get isPlayerTurn(): boolean {
+        return this.player.id === this.playerWhoHasToPlay.id;
     }
 }

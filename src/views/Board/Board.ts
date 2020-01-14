@@ -27,14 +27,12 @@ import RoundResultDto from "@/dto/RoundResultDto";
     }
 })
 export default class Board extends Vue {
-    public status: String = "C'est au tour du joueur : ";
     public showCommonModal = false;
     public showGuardModal = false;
     public showChancellorModal = false;
     public showPriestModal = false;
     public showRoundEndedModal = false;
     public showGameEndedModal = false;
-    public showTurnOf = false;
     public cardPlayed?: PlayCardDto;
     public targetCard: Card | null = null;
     public roundResult: RoundResultDto | null = null;
@@ -186,19 +184,15 @@ export default class Board extends Vue {
         return this.$store.getters.GET_PLAYER_WHO_HAS_TO_PLAY;
     }
 
-    public fadeOutModal() {
-        this.showTurnOf = false;
-    }
-
     @Watch("playerWhoHasToPlay", { immediate: true, deep: true })
     onPlayerWhoHasToPlayChanged(
         val: Player | undefined,
-        _: Player | undefined
+        old: Player | undefined
     ) {
         if (val) {
-            this.status = `C'est au tour du joueur : ${val.name}`;
-            //this.showTurnOf = true;
-            const anim = setTimeout(this.fadeOutModal, 1500);
+            if (this.currentPlayer.isPlayerTurn && val.id !== old?.id) {
+                console.log("jeton");
+            }
         }
     }
 }
