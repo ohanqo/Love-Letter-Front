@@ -2,7 +2,10 @@
     <div
         class="z-10 absolute top-0 right-0 bottom-0 left-0 flex justify-center items-center"
     >
-        <div class="absolute w-full h-full bg-gray-900 opacity-50"></div>
+        <div
+            class="absolute w-full h-full bg-gray-900 opacity-50"
+            @click="closeModal"
+        ></div>
         <div class="relative modal">
             <img
                 class="border-modal"

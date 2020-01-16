@@ -18,17 +18,20 @@
         <ChancellorModalComponent
             v-if="showChancellorModal"
             v-on:send-chancellor-placed-cards="sendChancellorPlacedCards"
+            v-on:close-modal="closeModal"
         />
 
         <CommonModalComponent
             v-if="showCommonModal"
             :cardPlayed="cardPlayed"
             v-on:send-card-played="sendCardPlayed"
+            v-on:close-modal="closeModal"
         />
 
         <GuardModalComponent
             v-if="showGuardModal"
             v-on:send-card-played-guard="sendCardPlayedGuard"
+            v-on:close-modal="closeModal"
         />
 
         <PriestModalComponent
@@ -36,6 +39,7 @@
             v-on:send-card-played-priest="sendCardPlayedPriest"
             v-on:close-priest-modal="closePriestModal"
             :targetCard="targetCard"
+            v-on:close-modal="closeModal"
         />
 
         <RoundEndedModalComponent

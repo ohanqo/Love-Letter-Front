@@ -31,6 +31,10 @@ export default class CommonModalComponent extends Vue {
         return this.$store.getters.GET_CONNECTED_PLAYER;
     }
 
+    public closeModal() {
+        this.$emit("close-modal");
+    }
+
     public get currentCard() {
         return this.currentPlayer.cardsHand.find(
             (c: Card) => c.id === this.cardPlayed.cardId

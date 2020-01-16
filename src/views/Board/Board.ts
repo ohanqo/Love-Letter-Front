@@ -107,6 +107,14 @@ export default class Board extends Vue {
         });
     }
 
+    public closeModal() {
+        this.showCommonModal = false;
+        this.showGuardModal = false;
+        this.showChancellorModal = false;
+        this.showPriestModal = false;
+        this.cardPlayed = undefined;
+    }
+
     public sendCardPlayed(selectedTargetId: string) {
         if (this.cardPlayed?.cardId) {
             const data: PlayCardDto = {

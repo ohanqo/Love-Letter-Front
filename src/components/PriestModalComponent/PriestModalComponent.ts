@@ -27,6 +27,10 @@ export default class PriestModalComponent extends Vue {
         this.$emit("close-priest-modal");
     }
 
+    public closeModal() {
+        this.$emit("close-modal");
+    }
+
     get currentPlayer() {
         return this.$store.getters.GET_CONNECTED_PLAYER;
     }

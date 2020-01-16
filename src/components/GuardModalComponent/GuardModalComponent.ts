@@ -30,6 +30,10 @@ export default class GuardModalComponent extends Vue {
             );
     }
 
+    public closeModal() {
+        this.$emit("close-modal");
+    }
+
     get currentPlayer() {
         return this.$store.getters.GET_CONNECTED_PLAYER;
     }
