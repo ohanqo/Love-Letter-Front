@@ -111,6 +111,8 @@ export default class Board extends Vue {
                 this.cardPlayed = cardPlayed;
             }
         });
+
+        EventBus.$on("replay", () => this.replay());
     }
 
     public closeModal() {
@@ -119,6 +121,11 @@ export default class Board extends Vue {
         this.showChancellorModal = false;
         this.showPriestModal = false;
         this.cardPlayed = undefined;
+    }
+
+    public replay() {
+        this.showGameEndedModal = false;
+        this.socket.emit(Events.Play);
     }
 
     public sendCardPlayed(selectedTargetId: string) {
