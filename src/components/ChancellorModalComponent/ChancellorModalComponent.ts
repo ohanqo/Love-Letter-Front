@@ -77,10 +77,6 @@ export default class ChancellorModalComponent extends Vue {
         interact(".is-draggable").unset();
     }
 
-    public closeModal() {
-        this.$emit("close-modal");
-    }
-
     private onDraggableCardMove(event: InteractEvent) {
         const target = event.target;
 

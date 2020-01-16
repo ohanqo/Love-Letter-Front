@@ -39,6 +39,7 @@ export default class Board extends Vue {
     public roundResult: RoundResultDto | null = null;
     public NumberOfCard = 18;
     public chatMessage: Chat[] = [];
+    public userMessage: string = "";
 
     public mounted() {
         this.socket.on(Events.CardPicked, (players: Player[]) => {
@@ -116,9 +117,19 @@ export default class Board extends Vue {
     public closeModal() {
         this.showCommonModal = false;
         this.showGuardModal = false;
-        this.showChancellorModal = false;
         this.showPriestModal = false;
         this.cardPlayed = undefined;
+    }
+
+    public sendMessageInChat() {
+        if (this.userMessage !== "") {
+            const data: Chat = {
+                player: this.currentPlayer,
+                message: this.userMessage
+            };
+            this.socket.emit(Events.Chat, data);
+            this.userMessage = "";
+        }
     }
 
     public sendCardPlayed(selectedTargetId: string) {
