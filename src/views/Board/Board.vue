@@ -50,6 +50,7 @@
             <GameEndedModalComponent
                 v-if="showGameEndedModal"
                 :roundResult="roundResult"
+                v-on:replay="replay"
             />
         </section>
         <section id="chat">

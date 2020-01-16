@@ -2,6 +2,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Events from "@/events/Events";
 import Player from "@/models/Player";
 import { SET_PLAYERS, SET_CURRENT_PLAYER_ID } from "@/store/types";
+import { EventBus } from "@/event-bus";
 
 @Component
 export default class Lobby extends Vue {
@@ -30,6 +31,7 @@ export default class Lobby extends Vue {
 
         this.socket.on(Events.StartRound, (players: Player[]) => {
             this.$store.commit(SET_PLAYERS, players);
+            EventBus.$emit("replay");
 
             if (this.$router.currentRoute.name !== "game") {
                 this.$router.replace({ name: "game" });

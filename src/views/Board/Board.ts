@@ -112,6 +112,8 @@ export default class Board extends Vue {
                 this.cardPlayed = cardPlayed;
             }
         });
+
+        EventBus.$on("replay", () => this.replay());
     }
 
     public closeModal() {
@@ -130,6 +132,11 @@ export default class Board extends Vue {
             this.socket.emit(Events.Chat, data);
             this.userMessage = "";
         }
+    }
+
+    public replay() {
+        this.showGameEndedModal = false;
+        this.socket.emit(Events.Play);
     }
 
     public sendCardPlayed(selectedTargetId: string) {
