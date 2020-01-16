@@ -14,6 +14,7 @@ import Message from "@/models/Message";
 import PlayCardDto from "@/dto/PlayCardDto";
 import { EventBus } from "@/event-bus";
 import RoundResultDto from "@/dto/RoundResultDto";
+import Chat from "@/dto/ChatDto";
 
 @Component({
     components: {
@@ -37,6 +38,7 @@ export default class Board extends Vue {
     public targetCard: Card | null = null;
     public roundResult: RoundResultDto | null = null;
     public NumberOfCard = 18;
+    public chatMessage: Chat[] = [];
 
     public mounted() {
         this.socket.on(Events.CardPicked, (players: Player[]) => {
@@ -83,6 +85,10 @@ export default class Board extends Vue {
 
         this.socket.on(Events.NumberOfCardsLeft, (NumberOfCard: number) => {
             this.NumberOfCard = NumberOfCard;
+        });
+
+        this.socket.on(Events.Chat, (chat: Chat) => {
+            this.chatMessage.push(chat);
         });
 
         EventBus.$on("display-common-modal", (cardPlayed: PlayCardDto) => {
