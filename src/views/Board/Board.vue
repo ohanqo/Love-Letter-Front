@@ -54,17 +54,20 @@
             />
         </section>
         <section id="chat">
-            <div class="container-message">
-                <div
+            <div class="container-chat">
+                <MessageComponent
                     v-for="(message, index) in chatMessage"
                     :key="index"
-                    :style="{ color: message.player.color }"
-                >
-                    {{ message.message }}
-                </div>
+                    :chat="message"
+                />
             </div>
             <div class="flex input">
-                <input type="text" v-model="userMessage" />
+                <input
+                    type="text"
+                    v-model="userMessage"
+                    class="w-full"
+                    v-on:keyup="valideInputName"
+                />
                 <button
                     @click="sendMessageInChat"
                     class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500"

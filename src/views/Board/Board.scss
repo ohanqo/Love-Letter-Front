@@ -1,18 +1,68 @@
 #chat {
   min-width: 275px;
+  max-width: 275px;
   height: 100vh;
+  max-height: 100vh;
   background-color: black;
-  .container-message {
+  .container-chat {
     height: calc(100vh - 44px);
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-    padding: 10px;
+    padding: 15px;
+
+    /*
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+      }
+
+      ::-webkit-scrollbar:vertical {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar:horizontal {
+        height: 12px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        border: 2px solid #ffffff;
+      }
+
+      ::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #ffffff;
+      }
+    */
+
+    .message {
+      margin-top: 5px;
+      .personal_message {
+        padding-left: 20px;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .message_of_other {
+        padding-right: 20px;
+      }
+      span {
+        color: white;
+        font-size: 12px;
+        margin-left: 10px;
+      }
+      .content {
+        border-radius: 1rem;
+        padding: 5px 10px;
+        border: 1px solid;
+        width: fit-content;
+      }
+    }
   }
   .input {
     height: 44px;
     input {
-      padding: 0 5px 0 0;
+      padding: 0 5px;
     }
   }
 }

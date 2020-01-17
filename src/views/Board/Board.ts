@@ -9,6 +9,7 @@ import GuardModalComponent from "@/components/GuardModalComponent/GuardModalComp
 import PriestModalComponent from "@/components/PriestModalComponent/PriestModalComponent.vue";
 import RoundEndedModalComponent from "@/components/RoundEndedModalComponent/RoundEndedModalComponent.vue";
 import GameEndedModalComponent from "@/components/GameEndedModalComponent/GameEndedModalComponent.vue";
+import MessageComponent from "@/components/MessageComponent/MessageComponent.vue";
 import Card from "@/models/Card";
 import Message from "@/models/Message";
 import PlayCardDto from "@/dto/PlayCardDto";
@@ -24,7 +25,8 @@ import Chat from "@/dto/ChatDto";
         GuardModalComponent,
         PriestModalComponent,
         RoundEndedModalComponent,
-        GameEndedModalComponent
+        GameEndedModalComponent,
+        MessageComponent
     }
 })
 export default class Board extends Vue {
@@ -188,6 +190,12 @@ export default class Board extends Vue {
     public sendChancellorPlacedCards(placedCards: Card[]) {
         this.socket.emit(Events.ChancellorPlacedCard, placedCards);
         this.showChancellorModal = false;
+    }
+
+    public valideInputName(e: any) {
+        if (e.keyCode === 13) {
+            this.sendMessageInChat();
+        }
     }
 
     public pickCard() {
