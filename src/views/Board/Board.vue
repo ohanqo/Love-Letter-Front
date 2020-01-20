@@ -64,8 +64,8 @@
             <div class="flex input">
                 <input
                     type="text"
-                    v-model="userMessage"
                     class="w-full"
+                    v-model="userMessage"
                     v-on:keyup="valideInputName"
                 />
                 <button

@@ -1,7 +1,10 @@
 <template>
     <div class="message">
+        <div v-if="chat.type === 'gameevent'" class="game-event">
+            <p>{{ chat.message }}</p>
+        </div>
         <div
-            v-if="currentPlayer.id === chat.player.id"
+            v-else-if="currentPlayer.id === chat.player.id"
             class="personal_message"
         >
             <div

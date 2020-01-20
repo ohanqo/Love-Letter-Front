@@ -73,14 +73,6 @@ export default class Board extends Vue {
             this.showGameEndedModal = true;
         });
 
-        this.socket.on(Events.Message, ({ message, type }: Message) => {
-            if (type === "success") {
-                this.$toasted.global.success({ message });
-            } else {
-                this.$toasted.global.error({ message });
-            }
-        });
-
         this.socket.on(Events.StartRound, (players: Player[]) => {
             this.showRoundEndedModal = false;
             this.roundResult = null;
@@ -129,7 +121,8 @@ export default class Board extends Vue {
         if (this.userMessage !== "") {
             const data: Chat = {
                 player: this.currentPlayer,
-                message: this.userMessage
+                message: this.userMessage,
+                type: "chat"
             };
             this.socket.emit(Events.Chat, data);
             this.userMessage = "";
@@ -239,6 +232,7 @@ export default class Board extends Vue {
         c: Chat
     ) {
         return (
+            c.type !== "gameevent" &&
             potentialPreviousChat &&
             potentialPreviousChat.player.id === c.player.id
         );
