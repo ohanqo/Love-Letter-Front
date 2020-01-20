@@ -15,7 +15,7 @@
             </div>
         </div>
         <div v-else class="message_of_other">
-            <span>{{ chat.player.name }}</span>
+            <span v-if="chat.player.name !== ''">{{ chat.player.name }}</span>
             <div
                 class="content"
                 :style="{

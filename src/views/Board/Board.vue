@@ -56,7 +56,7 @@
         <section id="chat">
             <div class="container-chat">
                 <MessageComponent
-                    v-for="(message, index) in chatMessage"
+                    v-for="(message, index) in chatMessageGrouped"
                     :key="index"
                     :chat="message"
                 />

@@ -219,4 +219,28 @@ export default class Board extends Vue {
     get playerWhoHasToPlay(): Player | undefined {
         return this.$store.getters.GET_PLAYER_WHO_HAS_TO_PLAY;
     }
+
+    get chatMessageGrouped(): Chat[] {
+        return this.chatMessage.map((c: Chat, index: number) => {
+            const potentialPreviousChat = this.chatMessage[index - 1];
+
+            if (
+                this.isPreviousMessageIsFromSamePlayer(potentialPreviousChat, c)
+            ) {
+                c.player.name = "";
+            }
+
+            return c;
+        });
+    }
+
+    private isPreviousMessageIsFromSamePlayer(
+        potentialPreviousChat: Chat,
+        c: Chat
+    ) {
+        return (
+            potentialPreviousChat &&
+            potentialPreviousChat.player.id === c.player.id
+        );
+    }
 }
