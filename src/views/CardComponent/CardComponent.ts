@@ -21,17 +21,24 @@ export default class CardComponent extends Vue {
         const cardPlayed: PlayCardDto = {
             cardId: card.id
         };
-        if (card.name === "Chancelier") {
-            this.socket.emit(Events.PlayChancellorCard, cardPlayed);
-        } else if (card.name === "Garde") {
-            EventBus.$emit("display-guard-modal", cardPlayed);
-        } else if (card.name === "Prêtre") {
-            EventBus.$emit("display-priest-modal", cardPlayed);
-        } else if (card.isPassive) {
-            this.socket.emit(Events.PlayCard, cardPlayed);
-        } else {
-            EventBus.$emit("display-common-modal", cardPlayed);
+
+        if (this.isCardBelongsToPlayer(cardPlayed.cardId)) {
+            if (card.name === "Chancelier") {
+                this.socket.emit(Events.PlayChancellorCard, cardPlayed);
+            } else if (card.name === "Garde") {
+                EventBus.$emit("display-guard-modal", cardPlayed);
+            } else if (card.name === "Prêtre") {
+                EventBus.$emit("display-priest-modal", cardPlayed);
+            } else if (card.isPassive) {
+                this.socket.emit(Events.PlayCard, cardPlayed);
+            } else {
+                EventBus.$emit("display-common-modal", cardPlayed);
+            }
         }
+    }
+
+    public isCardBelongsToPlayer(id: string) {
+        return this.connectedPlayer.cardsHand.some((c: Card) => c.id === id);
     }
 
     public get socket(): SocketIOClient.Socket {
@@ -42,7 +49,7 @@ export default class CardComponent extends Vue {
         return this.$store.getters.GET_PLAYER_WHO_HAS_TO_PLAY;
     }
 
-    get connectedPlayer() {
+    get connectedPlayer(): Player {
         return this.$store.getters.GET_CONNECTED_PLAYER;
     }
 }

@@ -1,188 +1,163 @@
 #chat {
-  min-width: 275px;
-  max-width: 275px;
-  height: 100vh;
-  max-height: 100vh;
-  background-color: black;
-  .container-chat {
-    height: calc(100vh - 44px);
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    padding: 15px;
-
-    /*
-    ::-webkit-scrollbar {
-        -webkit-appearance: none;
-      }
-
-      ::-webkit-scrollbar:vertical {
-        width: 12px;
-      }
-
-      ::-webkit-scrollbar:horizontal {
-        height: 12px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        border: 2px solid #ffffff;
-      }
-
-      ::-webkit-scrollbar-track {
-        border-radius: 10px;
-        background-color: #ffffff;
-      }
-    */
-
-    .message {
-      margin-top: 5px;
-      .personal_message {
-        padding-left: 20px;
+    min-width: 275px;
+    max-width: 275px;
+    height: 100vh;
+    max-height: 100vh;
+    background-color: black;
+    .container-chat {
+        height: calc(100vh - 44px);
         display: flex;
         justify-content: flex-end;
-      }
-      .message_of_other {
-        padding-right: 20px;
-      }
-      span {
-        color: white;
-        font-size: 12px;
-        margin-left: 10px;
-      }
-      .content {
-        border-radius: 1rem;
-        padding: 5px 10px;
-        border: 1px solid;
-        width: fit-content;
-      }
+        flex-direction: column;
+        padding: 15px;
+
+        .message {
+            margin-top: 5px;
+            .personal_message {
+                padding-left: 20px;
+                display: flex;
+                justify-content: flex-end;
+            }
+            .message_of_other {
+                padding-right: 20px;
+            }
+            span {
+                color: white;
+                font-size: 12px;
+                margin-left: 10px;
+            }
+            .content {
+                border-radius: 1rem;
+                padding: 5px 10px;
+                border: 1px solid;
+                width: fit-content;
+            }
+        }
     }
-  }
-  .input {
-    height: 44px;
-    input {
-      padding: 0 5px;
+    .input {
+        height: 44px;
+        input {
+            padding: 0 5px;
+        }
     }
-  }
 }
 
 .bg-board {
-  width: calc(100% - 275px);
-  position: fixed;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 275px;
-  z-index: 2;
+    width: calc(100% - 275px);
+    position: fixed;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 275px;
+    z-index: 2;
 }
 
 #board {
-  background: url("/assets/img/bg-4.png") no-repeat center;
-  background-size: cover;
-  width: 100%;
+    background: url("/assets/img/bg-4.png") no-repeat center;
+    background-size: cover;
+    width: 100%;
 }
 
 .btn-easy-win {
-  z-index: 3;
-  position: fixed;
-  bottom: 2px;
-  right: 2px;
-  background-color: blueviolet;
-  color: white;
-  border-radius: 8px;
-  padding: 5px 8px;
+    z-index: 3;
+    position: fixed;
+    bottom: 2px;
+    right: 2px;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 8px;
 }
 
 .positionHands {
-  padding: 35px;
-  position: fixed;
-  width: calc(100% - 275px);
-  right: 275px;
-  height: 100%;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+    padding: 35px;
+    position: fixed;
+    width: calc(100% - 275px);
+    right: 275px;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .deck {
-  background: url("/assets/img/back_card_2.png") no-repeat center;
-  background-size: 100px auto;
-  width: 100px;
-  height: 150px;
-  position: fixed;
-  right: 320px;
-  border-radius: 4px;
-  bottom: 20px;
-  z-index: 3;
-  font-weight: bold;
-  font-size: 24px;
-  border: 1px solid white;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    border: 1px solid gold;
+    background: url("/assets/img/back_card_2.png") no-repeat center;
+    background-size: 100px auto;
+    width: 100px;
+    height: 150px;
+    position: fixed;
+    right: 320px;
     border-radius: 4px;
-  }
-  &:before {
-    content: "Pioche";
-    color: white;
-    font-size: 16px;
-    position: absolute;
-    font-weight: normal;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -23px;
-  }
+    bottom: 20px;
+    z-index: 3;
+    font-weight: bold;
+    font-size: 24px;
+    border: 1px solid white;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        border: 1px solid gold;
+        border-radius: 4px;
+    }
+    &:before {
+        content: "Pioche";
+        color: white;
+        font-size: 16px;
+        position: absolute;
+        font-weight: normal;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -23px;
+    }
 }
 
 .container-status-game {
-  position: fixed;
-  width: calc(100% - 275px);
-  height: 75px;
-  bottom: 30px;
-  left: 0;
-  .score {
-    color: #f0d09e;
-    font-family: "font-calli";
-    font-size: 24px;
-    background-color: black;
-    width: 50px;
-    height: 50px;
-    border-radius: 2rem;
-    padding: 8px 15px;
-    border: 2px solid #f0d09e;
-    margin: 10px auto 0 auto;
-    text-align: center;
-    &:after {
-      content: "Score";
-      color: white;
-      font-size: 18px;
-      font-family: initial;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -8px;
+    position: fixed;
+    width: calc(100% - 275px);
+    height: 75px;
+    bottom: 30px;
+    left: 0;
+    .score {
+        color: #f0d09e;
+        font-family: "font-calli";
+        font-size: 24px;
+        background-color: black;
+        width: 50px;
+        height: 50px;
+        border-radius: 2rem;
+        padding: 8px 15px;
+        border: 2px solid #f0d09e;
+        margin: 10px auto 0 auto;
+        text-align: center;
+        &:after {
+            content: "Score";
+            color: white;
+            font-size: 18px;
+            font-family: initial;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -8px;
+        }
     }
-  }
 }
 
 .status_game {
-  position: fixed;
-  bottom: 45px;
-  left: 45px;
-  width: auto;
-  padding: 10px;
-  color: white;
-  font-weight: 300;
-  font-size: 18px;
-  font-family: "Poppins";
+    position: fixed;
+    bottom: 45px;
+    left: 45px;
+    width: auto;
+    padding: 10px;
+    color: white;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: "Poppins";
 }
 
 .animation-turnof {
-  transition: 1s;
+    transition: 1s;
 }
