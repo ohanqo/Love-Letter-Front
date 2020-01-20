@@ -233,6 +233,7 @@ export default class Board extends Vue {
     ) {
         return (
             c.type !== "gameevent" &&
+            potentialPreviousChat.type !== "gameevent" &&
             potentialPreviousChat &&
             potentialPreviousChat.player.id === c.player.id
         );

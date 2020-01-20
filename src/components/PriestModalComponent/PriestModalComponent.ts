@@ -12,7 +12,7 @@ export default class PriestModalComponent extends Vue {
     @Prop({ default: null })
     public targetCard?: Card | null;
 
-    public selectedTargetId = "";
+    public selectedTargetId = this.aliveOpponents[0]?.id ?? "";
 
     public get aliveOpponents() {
         return this.$store.getters.GET_ALIVE_OPPONENTS;

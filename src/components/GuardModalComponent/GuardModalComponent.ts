@@ -3,7 +3,7 @@ import Player from "@/models/Player";
 
 @Component
 export default class GuardModalComponent extends Vue {
-    public selectedTargetId = "";
+    public selectedTargetId = this.aliveOpponents[0]?.id ?? "";
     public selectedCardValue = "";
     public cards = [
         "Espionne",
