@@ -16,7 +16,9 @@
                     Séléctionnez la carte que vous souhaitez garder.
                 </h2>
 
-                <div class="flex flex-no-wrap justify-center mt-8 container">
+                <div
+                    class="flex flex-no-wrap justify-center container-choice mt-8 container"
+                >
                     <img
                         v-for="(card, index) in connectedPlayer.cardsHand"
                         :key="index"
@@ -26,7 +28,9 @@
                     />
                 </div>
 
-                <div class="flex flex-no-wrap justify-center mt-16 container">
+                <div
+                    class="flex flex-no-wrap justify-center container-discard mt-16 container"
+                >
                     <div>
                         <div
                             data-index="0"

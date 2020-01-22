@@ -4,7 +4,10 @@
     >
         <div class="absolute w-full h-full bg-gray-900 opacity-75"></div>
         <div class="relative">
-            <img src="/assets/img/game_ended.png" class="mb-10 mx-auto" />
+            <img
+                src="/assets/img/game_ended.png"
+                class="mb-10 mx-auto game-ended-img"
+            />
             <p
                 class="w-full my-2 text-lg leading-tight text-center text-white m--20"
             >

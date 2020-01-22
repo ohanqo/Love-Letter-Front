@@ -71,7 +71,7 @@
             <div class="flex items-center justify-center">
                 <button
                     @click="sendCardPlayedEvent"
-                    class="mx-auto block  lg:mx-0 hover:pointer z-10 bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
+                    class="mx-auto block button-responsive  lg:mx-0 hover:pointer z-10 bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
                 >
                     Confirmer
                 </button>

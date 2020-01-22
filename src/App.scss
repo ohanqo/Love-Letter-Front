@@ -101,3 +101,40 @@
 .fit-content {
   width: fit-content;
 }
+
+//Pixel 2 XL (823 x 411)
+@media (max-width: 823px) {
+  .modal {
+    min-width: 0;
+    min-height: 0;
+    height: auto;
+    margin: 10px;
+    .title-modal {
+      top: -50px;
+      font-size: 20px;
+      height: 1px;
+    }
+
+    .modal-priest {
+      .played {
+        margin: 10px auto;
+        width: 110px !important;
+        height: 155px !important;
+        img {
+          width: 60px !important;
+          height: 90px !important;
+        }
+      }
+    }
+  }
+  .size-card {
+    width: 60px;
+    height: 90px;
+  }
+  .container-choice {
+    margin-top: 10px;
+  }
+  .container-discard {
+    margin-top: 15px;
+  }
+}

@@ -1,136 +1,155 @@
 .container-card {
-    display: flex;
-    width: 100%;
-    max-width: 500px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    width: 80px;
+    height: 115px;
+    margin-bottom: 12px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 115px;
+    width: 80px;
+    background-color: #eee;
+  }
+
+  .checkmark:hover {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    animation-duration: 1.5s;
+    @keyframes shake {
+      0% {
+        -webkit-transform: translate(2px, 1px) rotate(0deg);
+      }
+      10% {
+        -webkit-transform: translate(-1px, -2px) rotate(-1deg);
+      }
+      20% {
+        -webkit-transform: translate(-3px, 0px) rotate(1deg);
+      }
+      30% {
+        -webkit-transform: translate(0px, 2px) rotate(0deg);
+      }
+      40% {
+        -webkit-transform: translate(1px, -1px) rotate(1deg);
+      }
+      50% {
+        -webkit-transform: translate(-1px, 2px) rotate(-1deg);
+      }
+      60% {
+        -webkit-transform: translate(-3px, 1px) rotate(0deg);
+      }
+    }
+  }
+
+  .Espionne input ~ .checkmark {
+    background: url("/assets/img/card_0.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .Garde input ~ .checkmark {
+    background: url("/assets/img/card_1.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .Prêtre input ~ .checkmark {
+    background: url("/assets/img/card_2.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .Baron input ~ .checkmark {
+    background: url("/assets/img/card_3.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .Servante input ~ .checkmark {
+    background: url("/assets/img/card_4.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .Prince input ~ .checkmark {
+    background: url("/assets/img/card_5.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .Chancelier input ~ .checkmark {
+    background: url("/assets/img/card_6.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .Roi input ~ .checkmark {
+    background: url("/assets/img/card_7.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .Comtesse input ~ .checkmark {
+    background: url("/assets/img/card_8.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .Princesse input ~ .checkmark {
+    background: url("/assets/img/card_9.png") no-repeat center;
+    background-size: cover;
+  }
+
+  .container input:checked ~ .checkmark {
+    border: 2px solid gold;
+    border-radius: 6px;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+}
+
+//Pixel 2 XL (823 x 411)
+@media (max-width: 823px) {
+  .container-card {
+    max-width: none;
     .container {
-        display: block;
-        position: relative;
-        padding-left: 35px;
-        width: 80px;
-        height: 115px;
-        margin-bottom: 12px;
-        margin: 5px;
-        cursor: pointer;
-        font-size: 22px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+      width: 60px;
+      height: 90px;
     }
-
-    .container input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-    }
-
     .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 115px;
-        width: 80px;
-        background-color: #eee;
+      height: 90px;
+      width: 60px;
     }
-
-    .checkmark:hover {
-        animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-        transform: translate3d(0, 0, 0);
-        backface-visibility: hidden;
-        perspective: 1000px;
-        animation-duration: 1.5s;
-        @keyframes shake {
-            0% {
-                -webkit-transform: translate(2px, 1px) rotate(0deg);
-            }
-            10% {
-                -webkit-transform: translate(-1px, -2px) rotate(-1deg);
-            }
-            20% {
-                -webkit-transform: translate(-3px, 0px) rotate(1deg);
-            }
-            30% {
-                -webkit-transform: translate(0px, 2px) rotate(0deg);
-            }
-            40% {
-                -webkit-transform: translate(1px, -1px) rotate(1deg);
-            }
-            50% {
-                -webkit-transform: translate(-1px, 2px) rotate(-1deg);
-            }
-            60% {
-                -webkit-transform: translate(-3px, 1px) rotate(0deg);
-            }
-        }
-    }
-
-    .Espionne input ~ .checkmark {
-        background: url("/assets/img/card_0.png") no-repeat center;
-        background-size: cover;
-    }
-
-    .Garde input ~ .checkmark {
-        background: url("/assets/img/card_1.png") no-repeat center;
-        background-size: cover;
-    }
-
-    .Prêtre input ~ .checkmark {
-        background: url("/assets/img/card_2.png") no-repeat center;
-        background-size: cover;
-    }
-
-    .Baron input ~ .checkmark {
-        background: url("/assets/img/card_3.png") no-repeat center;
-        background-size: cover;
-    }
-
-    .Servante input ~ .checkmark {
-        background: url("/assets/img/card_4.png") no-repeat center;
-        background-size: cover;
-    }
-
-    .Prince input ~ .checkmark {
-        background: url("/assets/img/card_5.png") no-repeat center;
-        background-size: cover;
-    }
-
-    .Chancelier input ~ .checkmark {
-        background: url("/assets/img/card_6.png") no-repeat center;
-        background-size: cover;
-    }
-
-    .Roi input ~ .checkmark {
-        background: url("/assets/img/card_7.png") no-repeat center;
-        background-size: cover;
-    }
-
-    .Comtesse input ~ .checkmark {
-        background: url("/assets/img/card_8.png") no-repeat center;
-        background-size: cover;
-    }
-
-    .Princesse input ~ .checkmark {
-        background: url("/assets/img/card_9.png") no-repeat center;
-        background-size: cover;
-    }
-
-    .container input:checked ~ .checkmark {
-        border: 2px solid gold;
-        border-radius: 6px;
-    }
-
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
-
-    .container input:checked ~ .checkmark:after {
-        display: block;
-    }
+  }
+  .button-responsive {
+    margin: 10px auto;
+    padding: 8px 15px;
+  }
 }
